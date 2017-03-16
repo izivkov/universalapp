@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{screen.title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        {{screen.title}}
+      </ion-card-title>
+      <div *ngIf="screen.image"><img src={{screen.image}}></div>
+      <span class="large" [innerHTML]="screen.text"></span>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

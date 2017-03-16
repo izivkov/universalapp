@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-left clear (click)="refresh ()">
+        <ion-icon name="md-refresh"></ion-icon>
+    </button>
+      <button ion-button clear (click)="settings()">
+        <ion-icon name="md-settings"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>{{screen.title}}
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-content>
+      <img src={{screen.image}} />
+      <div *ngFor="let button of buttons">
+        <btn [style]=button.style [name]=button.name [color]=button.color [size]=button.size [shape]=button.shape (click)="onClick(button.name)"></btn>
+      </div>
+      <span class="large" [innerHTML]="screen.text"></span>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

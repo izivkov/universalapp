@@ -7,14 +7,18 @@ import { DataExtractor } from './data-extractor';
 import { ConfigService } from '../app/config.service';
 
 @Injectable()
+export class TabsService extends DataExtractor<ScreenInfo> {
 
-export class ScreensService extends DataExtractor<ScreenInfo> {
+    errorMessage: string;
+
+    ngOnInit() {
+    }
 
     constructor(http: Http) {
         super(http, ConfigService.getScreensUrl());
     }
 
-    getScreens(): Observable<ScreenInfo[]> {
+    getTabs(): Observable<ScreenInfo[]> {
         return this.getData();
     }
 }

@@ -1,10 +1,8 @@
 import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { TabPage } from '../pages/tab-page/tab-page';
+import { Tabs } from '../pages/tabs/tabs';
 import { DetailPage } from '../pages/detail/detail';
 import { SettingsPage } from '../pages/settings/settings';
 import { Btn } from '../components/btn/btn';
@@ -14,10 +12,8 @@ import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
+    TabPage,
+    Tabs,
     DetailPage,
     SettingsPage,
     Btn
@@ -30,10 +26,8 @@ import { HttpModule } from '@angular/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
+    TabPage,
+    Tabs,
     DetailPage,
     SettingsPage,
     Btn

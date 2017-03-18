@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 
 import { Button } from './button';
-import { DataExtractor } from './DataExtractor';
+import { DataExtractor } from './data-extractor';
 import { ConfigService } from '../app/config.service';
 
 @Injectable()

@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { ButtonsService } from '../../data/buttons.service';
-import { ScreensService } from '../../data/screens.service';
 import { Button } from '../../data/button';
 import { DetailPage } from '../detail/detail';
 import { SettingsPage } from '../settings/settings';
 import { Page } from '../page';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
-  providers: [ButtonsService, ScreensService]
+  selector: 'tab-page',
+  templateUrl: 'tab-page.html',
+  providers: [ButtonsService]
 })
 
-export class HomePage extends Page {
+export class TabPage extends Page {
 
   buttons: Button[];
 
@@ -22,8 +21,6 @@ export class HomePage extends Page {
   navCtrl: NavController;
 
   ngOnInit() {
-    this.screen = {name: 'home'};
-    this.getScreen('home');
     this.getButtons();
   }
 
@@ -41,17 +38,15 @@ export class HomePage extends Page {
   }
 
   settings(): void {
-    console.log ("Settings screen...");
     this.navCtrl.push(SettingsPage);
   }
 
   refresh (): void {
-    this.getScreen('home');
     this.getButtons();
   }
 
-  constructor(public _navCtrl: NavController, private buttonsService: ButtonsService, screensService: ScreensService) {
-    super (screensService);
+  constructor(public _navCtrl: NavController, private buttonsService: ButtonsService, navParams: NavParams) {
+    super (navParams.data);
     this.navCtrl = _navCtrl;
   }
 }

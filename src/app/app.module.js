@@ -7,9 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { TabPage } from '../pages/tab-page/tab-page';
+import { SecondaryPage } from '../pages/secondaryPage/secondaryPage';
 import { TabsPage } from '../pages/tabs/tabs';
 import { DetailPage } from '../pages/detail/detail';
 import { HttpModule } from '@angular/http';
@@ -23,8 +22,7 @@ AppModule = __decorate([
     NgModule({
         declarations: [
             MyApp,
-            AboutPage,
-            ContactPage,
+            SecondaryPage,
             HomePage,
             TabsPage,
             DetailPage,
@@ -37,8 +35,7 @@ AppModule = __decorate([
         bootstrap: [IonicApp],
         entryComponents: [
             MyApp,
-            AboutPage,
-            ContactPage,
+            SecondaryPage,
             HomePage,
             TabsPage,
             DetailPage,

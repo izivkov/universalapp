@@ -1,19 +1,30 @@
 import { Component } from '@angular/core';
 
-import { HomePage } from '../home/home';
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
+import { TabPage } from '../tab-page/tab-page';
+import { ScreenInfo } from '../../data/screen-info';
+
+import { ScreensService } from '../../data/screens.service';
 
 @Component({
-  templateUrl: 'tabs.html'
+  templateUrl: 'tabs.html',
+  providers: [ScreensService]
 })
-export class TabsPage {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
-  tab1Root: any = HomePage;
-  tab2Root: any = AboutPage;
-  tab3Root: any = ContactPage;
+export class Tabs {
 
-  constructor() {
+  params: any;
+  tabRoot: any;
+  errorMessage: string;
+  screens: ScreenInfo[];
+
+  constructor(private screensService: ScreensService) {
+
+    this.tabRoot = TabPage;
+
+    screensService.getScreens()
+      .subscribe(
+      screens => {
+        this.screens = screens;
+      },
+      error => this.errorMessage = <any>error);
   }
 }

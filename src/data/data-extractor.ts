@@ -27,7 +27,6 @@ export class DataExtractor<T> {
                         obj[x.split('$')[1]] = entry[x]['$t'];
                     }
                 }
-                console.log (obj);
                 returnArray.push(obj);
             });
         }

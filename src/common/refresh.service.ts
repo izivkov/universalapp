@@ -12,7 +12,6 @@ export class RefreshService {
     }
 
     refreshAll () : void {
-    
         RefreshService.refreshables.forEach (function (refreshable) {
             refreshable.onRefresh ();
         })

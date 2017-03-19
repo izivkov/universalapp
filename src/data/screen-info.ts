@@ -1,5 +1,3 @@
-import { Injectable } from '@angular/core';
-
 // Keeps information loaded from 'screens' Google sheets.
 
 export class ScreenInfo {

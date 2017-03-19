@@ -1,7 +1,8 @@
 import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { TabPage } from '../pages/tab-page/tab-page';
+import { TabPageHome } from '../pages/tab-page-home/tab-page-home';
+import { TabPageSecondary } from '../pages/tab-page-secondary/tab-page-secondary';
 import { Tabs } from '../pages/tabs/tabs';
 import { DetailPage } from '../pages/detail-page/detail-page';
 import { SettingsPage } from '../pages/settings/settings';
@@ -12,7 +13,8 @@ import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
-    TabPage,
+    TabPageHome,
+    TabPageSecondary,
     Tabs,
     DetailPage,
     SettingsPage,
@@ -26,7 +28,8 @@ import { HttpModule } from '@angular/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    TabPage,
+    TabPageHome,
+    TabPageSecondary,
     Tabs,
     DetailPage,
     SettingsPage,

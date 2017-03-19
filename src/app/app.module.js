@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { TabPage } from '../pages/tab-page/tab-page';
+import { TabPage } from '../pages/tab-page-hom/tab-page';
 import { SecondaryPage } from '../pages/secondaryPage/secondaryPage';
 import { TabsPage } from '../pages/tabs/tabs';
 import { DetailPage } from '../pages/detail-page/detail-page';

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { TabPage } from '../tab-page/tab-page';
+import { TabPageHome } from '../tab-page-home/tab-page-home';
+import { TabPageSecondary } from '../tab-page-secondary/tab-page-secondary';
 import { ScreenInfo } from '../../data/screen-info';
 import { ScreenInfoService } from '../../data/screen-info.service';
 
@@ -14,6 +15,7 @@ import { RefreshService } from '../../common/refresh.service';
 export class Tabs implements Refreshable {
 
   tabRoot: any;
+  tabRootSecondary: any;
   errorMessage: string;
   screens: ScreenInfo[];
   self = this;
@@ -34,7 +36,8 @@ export class Tabs implements Refreshable {
 
   constructor(private screensService: ScreenInfoService,  private refreshService: RefreshService) {
 
-    this.tabRoot = TabPage;
+    this.tabRoot = TabPageHome;
+    this.tabRootSecondary = TabPageSecondary;
     this.getScreens ();
     refreshService.add (this);
   }

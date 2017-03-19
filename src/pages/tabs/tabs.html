@@ -1,5 +1,5 @@
 <ion-tabs *ngIf="screens">
   <div *ngFor="let screen of screens">
-    <ion-tab *ngIf="screen.hidden !== 'Yes'" [root]="tabRoot" tabTitle="{{screen.title}}" tabIcon="{{screen.tabicon}}" [rootParams]="screen"></ion-tab>
+    <ion-tab *ngIf="screen.hidden !== 'Yes'" [root]="tabRoot" tabTitle="{{screen.title}}" tabIcon="{{screen.tabicon}}" [rootParams]="{screen:screen, refreshFunction:getScreens}"></ion-tab>
   </div>
 </ion-tabs>

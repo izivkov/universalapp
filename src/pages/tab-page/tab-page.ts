@@ -3,17 +3,20 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { ButtonsService } from '../../data/buttons.service';
 import { Button } from '../../data/button';
-import { DetailPage } from '../detail/detail';
+import { DetailPage } from '../detail-page/detail-page';
 import { SettingsPage } from '../settings/settings';
 import { Page } from '../page';
+import { ScreenInfoService } from '../../data/screen-info.service';
+import { Refreshable } from '../../common/refreshable';
+import { RefreshService } from '../../common/refresh.service';
 
 @Component({
   selector: 'tab-page',
   templateUrl: 'tab-page.html',
-  providers: [ButtonsService]
+  providers: [ButtonsService, ScreenInfoService, RefreshService]
 })
 
-export class TabPage extends Page {
+export class TabPage extends Page implements Refreshable {
 
   buttons: Button[];
 
@@ -41,12 +44,17 @@ export class TabPage extends Page {
     this.navCtrl.push(SettingsPage);
   }
 
-  refresh (): void {
+  onRefresh (): void {
     this.getButtons();
   }
 
-  constructor(public _navCtrl: NavController, private buttonsService: ButtonsService, navParams: NavParams) {
-    super (navParams.data);
+  refresh (): void {
+    this.refreshService.refreshAll ();  
+  }
+
+  constructor(public _navCtrl: NavController, private buttonsService: ButtonsService, private refreshService: RefreshService, private navParams: NavParams) {
+    super (navParams.data.screen);
     this.navCtrl = _navCtrl;
+    refreshService.add (this);
   }
 }

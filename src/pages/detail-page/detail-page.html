@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{button.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <div *ngIf="button.video" class="video-container">
+        <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(button.video)" style="width: 100%; height: 100%" frameborder="0"></iframe>
+      </div>
+
+      <img src="{{button.image}}" />
+      <ion-card-title>
+        {{button.name}}
+      </ion-card-title>
+      <span class="large" [innerHTML]="button.text"></span>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

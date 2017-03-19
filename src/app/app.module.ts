@@ -3,7 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { TabPage } from '../pages/tab-page/tab-page';
 import { Tabs } from '../pages/tabs/tabs';
-import { DetailPage } from '../pages/detail/detail';
+import { DetailPage } from '../pages/detail-page/detail-page';
 import { SettingsPage } from '../pages/settings/settings';
 import { Btn } from '../components/btn/btn';
 

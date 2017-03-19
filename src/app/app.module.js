@@ -10,7 +10,7 @@ import { MyApp } from './app.component';
 import { TabPage } from '../pages/tab-page/tab-page';
 import { SecondaryPage } from '../pages/secondaryPage/secondaryPage';
 import { TabsPage } from '../pages/tabs/tabs';
-import { DetailPage } from '../pages/detail/detail';
+import { DetailPage } from '../pages/detail-page/detail-page';
 import { HttpModule } from '@angular/http';
 
 var AppModule = (function () {

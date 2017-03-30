@@ -18,7 +18,6 @@ export class Tabs implements Refreshable {
   tabRootSecondary: any;
   errorMessage: string;
   screens: ScreenInfo[];
-  self = this;
 
   onRefresh () : void {
     this.screens = undefined;

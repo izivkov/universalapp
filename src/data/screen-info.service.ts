@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+
 import { Http } from '@angular/http';
 
 import { ScreenInfo } from './screen-info';
@@ -11,10 +12,10 @@ import { ConfigService } from '../app/config.service';
 export class ScreenInfoService extends DataExtractor<ScreenInfo> {
 
     constructor(http: Http) {
-        super(http, ConfigService.getScreensUrl());
+        super(http, ConfigService.getTabsUrl());
     }
 
     getScreens(): Observable<ScreenInfo[]> {
-        return this.getData();
+        return this.getData(ConfigService.getTabsUrl());
     }
 }

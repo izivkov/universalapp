@@ -1,22 +1,42 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar [hidden]="selectionMode" hideBackButton="false">
     <ion-title>
       {{screen.title}}
     </ion-title>
   </ion-navbar>
+  <ion-toolbar *ngIf="selectionMode" color="primary">
+    <ion-buttons>
+      <button item-right ion-button icon-only (click)="selectionMode = false"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="deleteSelected()"><ion-icon name="trash"></ion-icon></button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <ion-card>
-    <ion-card-content>
-      <ion-card-title>
-        {{screen.title}}
-      </ion-card-title>
+  <h2>Select App:</h2>
+  <div *ngFor="let app of apps" (press)="selectionMode = true" (click)="select(app)">
+    <ion-list>
+      <ion-item [ngStyle]="getCurrentSheetId () === app.sheetId  && { 'background-color':'#123456', 'color': 'white'}">
 
-      {{getSettings ()}}
-      
-    </ion-card-content>
-  </ion-card>
+        <ion-thumbnail item-left>
+          <img src="{{app.image}}" [ngStyle]="app.selected && {'padding': '10px'}"/>
+        </ion-thumbnail>
+
+        <div item-left>
+          <h2>{{app.name}}</h2>
+          <p>{{app.author}}</p>
+        </div>
+
+        <ion-checkbox [hidden]="!selectionMode" item-right checked="app.selected" (click)="selectForDeletion (app)"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-fab bottom right >
+    <button ion-fab mini color="danger" (click)="presentAddApp($event)"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 
 </ion-content>

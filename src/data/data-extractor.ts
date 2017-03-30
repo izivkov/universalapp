@@ -6,10 +6,10 @@ import 'rxjs/add/operator/map';
 
 export class DataExtractor<T> {   
 
-    constructor(private http: Http, private url:string) { }
+    constructor(private http: Http, private url?:string) { }
 
-    protected getData(): Observable<T[]> {
-        return this.http.get(this.url)
+    protected getData(url?: string): Observable<T[]> {
+        return this.http.get(url || this.url)
             .map(this.extractData)
             .catch(this.handleError);
     }

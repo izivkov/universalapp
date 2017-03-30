@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{screen.title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-content>
+      <img src={{screen.image}} />
+      <span class="large" [innerHTML]="screen.text"></span>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

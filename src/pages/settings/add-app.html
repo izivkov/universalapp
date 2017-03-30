@@ -1,0 +1,18 @@
+<ion-content padding>
+        <ion-label color="primary">Paste Google sheet URL or ID:</ion-label>
+        <input type="text" [(ngModel)]="appId" placeholder="Google sheet URL or ID" (change)="getApp(appId)" />
+
+    <div *ngIf="app">
+        <ion-thumbnail item-left>
+            <img src="{{app.image}}" padding>
+        </ion-thumbnail>
+
+        <div item-left>
+            <h2>{{app.name}}</h2>
+            <p>{{app.author}}</p>
+        </div>
+    </div>
+
+    <button ion-button clear (click)="cancel()">Cancel</button>
+    <button [disabled]="!app" ion-button clear (click)="add(app.sheetId)">Add</button>
+</ion-content>

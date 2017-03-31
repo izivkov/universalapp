@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams, ToastController } from 'ionic-angular';
+import { ViewController, NavParams } from 'ionic-angular';
 import { AppInfo } from '../../data/app-info';
 import { AppId } from '../../data/app-id';
 import { Renderer } from '@angular/core';
 import { AppInfoService } from '../../data/app-info.service';
 import { ConfigService } from '../../app/config.service';
+import { Utils } from '../../common/utils';
 
 @Component({
   templateUrl: './add-app.html',
-  providers: [AppInfoService],
+  providers: [AppInfoService, Utils],
   styleUrls: ['/pages/settings/add-app.scss']
 })
 
@@ -19,7 +20,7 @@ export class AddAppPage {
   errorMessage: string;
 
   constructor(public viewCtrl: ViewController, private appInfoService: AppInfoService,
-    private navParams: NavParams, public renderer: Renderer, public toastCtrl: ToastController) {
+    private navParams: NavParams, public renderer: Renderer, private utils: Utils) {
     this.renderer.setElementClass(viewCtrl.pageRef().nativeElement, 'add-app-popup', true);
   }
 
@@ -57,27 +58,18 @@ export class AddAppPage {
 
   verifyId (id: string): boolean {
     if (id.length !== 44) {
-      this.showToast ("Invalid URL or ID entered.")
+      this.utils.showToast ("Invalid URL or ID entered.")
       return false;
     }
 
     for (let appId of this.appIds) {
       if (id === appId.sheetId) {
-        this.showToast ("This ID already exists.")
+        this.utils.showToast ("This ID already exists.")
         return false;
       }
     }
 
     return true;
-  }
-
-  showToast(message: string): void {
-    const toast = this.toastCtrl.create({
-      message: message,
-      showCloseButton: true,
-      duration: 3000
-    });
-    toast.present();
   }
 
   private close(sheetId?: string): void {

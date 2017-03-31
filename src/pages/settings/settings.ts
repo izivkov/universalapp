@@ -7,10 +7,11 @@ import { AppInfoService } from '../../data/app-info.service';
 import { RefreshService } from '../../common/refresh.service';
 import { ModalController } from 'ionic-angular';
 import { AddAppPage } from './add-app';
+import { Utils } from '../../common/utils';
 
 @Component({
   templateUrl: 'settings.html',
-  providers: [AppInfoService, RefreshService],
+  providers: [AppInfoService, RefreshService, Utils],
 })
 
 export class SettingsPage {
@@ -40,6 +41,10 @@ export class SettingsPage {
 
     for (let i = this.apps.length - 1; i >= 0; i--) {
       if (this.apps[i].selected) {
+        if (appIds [i].sheetId === ConfigService.getCurrentSheetId()) {
+          this.utils.showToast ("Cannot detele current app");
+          continue;
+        }
         appIds.splice(i, 1);
       }
     }
@@ -98,6 +103,7 @@ export class SettingsPage {
     public navCtrl: NavController,
     private appInfoService: AppInfoService,
     private refreshService: RefreshService,
-    public modalController: ModalController) {
+    public modalController: ModalController,
+    private utils: Utils) {
   }
 }

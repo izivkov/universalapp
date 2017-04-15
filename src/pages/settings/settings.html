@@ -19,7 +19,7 @@
   <h2>Select App:</h2>
   <div *ngFor="let app of apps" (press)="selectionMode = true" (click)="select(app)">
     <ion-list>
-      <ion-item [ngStyle]="getCurrentSheetId () === app.sheetId  && { 'background-color':'#123456', 'color': 'white'}">
+      <ion-item [ngStyle]="getCurrentId () === app.sheetId  && { 'background-color':'#123456', 'color': 'white'}">
 
         <ion-thumbnail item-left>
           <img src="{{app.image}}" [ngStyle]="app.selected && {'padding': '10px'}"/>

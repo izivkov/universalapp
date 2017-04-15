@@ -10,8 +10,8 @@ import { ConfigService } from '../app/config.service';
 
 export class ButtonsService extends DataExtractor<Button> {
 
-    constructor(http: Http) { 
-        super (http, ConfigService.getButtonsUrl ());
+    constructor(http: Http, private configService:ConfigService) { 
+        super (http, configService.getButtonsUrl ());
     }
 
     getButtons(): Observable<Button[]> {

@@ -20,7 +20,7 @@ export class AddAppPage {
   errorMessage: string;
 
   constructor(public viewCtrl: ViewController, private appInfoService: AppInfoService,
-    private navParams: NavParams, public renderer: Renderer, private utils: Utils) {
+    private navParams: NavParams, public renderer: Renderer, private utils: Utils, private configService:ConfigService) {
     this.renderer.setElementClass(viewCtrl.pageRef().nativeElement, 'add-app-popup', true);
   }
 
@@ -38,7 +38,7 @@ export class AddAppPage {
       return;
     }
 
-    let url = ConfigService.getAppInfoUrl(sheetId);
+    let url = this.configService.getAppInfoUrl(sheetId);
     this.appInfoService.getAppInfo(url).subscribe(
       app => {
         this.app = app[0];
@@ -81,7 +81,7 @@ export class AddAppPage {
   }
 
   add (sheetId): void {
-    ConfigService.addId (sheetId);
+    this.configService.addId (sheetId);
     this.close(this.app.sheetId);
   }
 }

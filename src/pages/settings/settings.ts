@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { NavController } from 'ionic-angular';
 import { ConfigService } from '../../app/config.service';
 import { AppId } from '../../data/app-id';
@@ -11,7 +12,7 @@ import { Utils } from '../../common/utils';
 
 @Component({
   templateUrl: 'settings.html',
-  providers: [AppInfoService, RefreshService, Utils],
+  providers: [AppInfoService, RefreshService, Utils]
 })
 
 export class SettingsPage {
@@ -37,11 +38,11 @@ export class SettingsPage {
 
   deleteSelected(): void {
     this.selectionMode = false;
-    var appIds: AppId[] = ConfigService.getAppIds();
+    var appIds: AppId[] = this.configService.getAppIds();
 
     for (let i = this.apps.length - 1; i >= 0; i--) {
       if (this.apps[i].selected) {
-        if (appIds [i].sheetId === ConfigService.getCurrentSheetId()) {
+        if (appIds [i].sheetId === this.configService.getCurrentId()) {
           this.utils.showToast ("Cannot detele current app");
           continue;
         }
@@ -49,7 +50,7 @@ export class SettingsPage {
       }
     }
 
-    ConfigService.setAppIds(appIds);
+    this.configService.setAppIds(appIds);
     this.getAppsInfo();
   }
 
@@ -58,18 +59,18 @@ export class SettingsPage {
       return;
     }
 
-    ConfigService.setCurrentSheetId(app.sheetId);
+    this.configService.setCurrentId(app.sheetId);
     //this.refreshService.refreshAll ();
     this.navCtrl.pop();
   }
 
   getAppsInfo(): void {
-    var appIds: AppId[] = ConfigService.getAppIds();
+    var appIds: AppId[] = this.configService.getAppIds();
     var urls: string[] = [];
     this.apps = [];
 
-    for (let appId of appIds) {
-      urls.push(ConfigService.getAppInfoUrl(appId.sheetId));
+    for (let i in appIds) {
+      urls.push(this.configService.getAppInfoUrl(appIds[i].sheetId));
     }
 
     this.appInfoService.getAppsInfo(urls).subscribe(
@@ -82,12 +83,12 @@ export class SettingsPage {
       error => this.errorMessage = <any>error);
   }
 
-  getCurrentSheetId () : string {
-    return ConfigService.getCurrentSheetId();
+  getCurrentId () : string {
+    return this.configService.getCurrentId();
   }
 
   presentAddApp(ev) {
-    let modal = this.modalController.create(AddAppPage, { appIds: ConfigService.getAppIds() });
+    let modal = this.modalController.create(AddAppPage, { appIds: this.configService.getAppIds() });
 
     modal.onDidDismiss(data => {
       console.log('MODAL DATA', data);
@@ -104,6 +105,7 @@ export class SettingsPage {
     private appInfoService: AppInfoService,
     private refreshService: RefreshService,
     public modalController: ModalController,
-    private utils: Utils) {
+    private utils: Utils,
+    private configService: ConfigService) {
   }
 }

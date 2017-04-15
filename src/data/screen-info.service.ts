@@ -11,11 +11,11 @@ import { ConfigService } from '../app/config.service';
 
 export class ScreenInfoService extends DataExtractor<ScreenInfo> {
 
-    constructor(http: Http) {
-        super(http, ConfigService.getTabsUrl());
+    constructor(http: Http, private configService: ConfigService) {
+        super(http, configService.getTabsUrl());
     }
 
     getScreens(): Observable<ScreenInfo[]> {
-        return this.getData(ConfigService.getTabsUrl());
+        return this.getData(this.configService.getTabsUrl());
     }
 }

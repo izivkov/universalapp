@@ -6,7 +6,7 @@ import { AppId } from '../../data/app-id';
 import { AppInfo } from '../../data/app-info';
 import { AppInfoService } from '../../data/app-info.service';
 import { RefreshService } from '../../common/refresh.service';
-import { ModalController } from 'ionic-angular';
+import { ModalController, AlertController } from 'ionic-angular';
 import { AddAppPage } from './add-app';
 import { Utils } from '../../common/utils';
 
@@ -42,8 +42,8 @@ export class SettingsPage {
 
     for (let i = this.apps.length - 1; i >= 0; i--) {
       if (this.apps[i].selected) {
-        if (appIds [i].sheetId === this.configService.getCurrentId()) {
-          this.utils.showToast ("Cannot detele current app");
+        if (appIds[i].sheetId === this.configService.getCurrentId()) {
+          this.utils.showToast("Cannot detele current app");
           continue;
         }
         appIds.splice(i, 1);
@@ -60,8 +60,12 @@ export class SettingsPage {
     }
 
     this.configService.setCurrentId(app.sheetId);
-    //this.refreshService.refreshAll ();
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
+    this.refreshService.refreshAll ();
+  }
+
+  onRefresh(): void {
+    console.log ("Settings onRefresh...")
   }
 
   getAppsInfo(): void {
@@ -83,7 +87,7 @@ export class SettingsPage {
       error => this.errorMessage = <any>error);
   }
 
-  getCurrentId () : string {
+  getCurrentId(): string {
     return this.configService.getCurrentId();
   }
 
@@ -93,11 +97,35 @@ export class SettingsPage {
     modal.onDidDismiss(data => {
       console.log('MODAL DATA', data);
       if (data) {
-        this.getAppsInfo();          
+        this.getAppsInfo();
       }
     });
 
     modal.present({ ev: ev });
+  }
+
+  reset(): void {
+    let alert = this.alertCtrl.create({
+      title: 'Reset Apps',
+      subTitle: "Are you sure you like to reset all apps to default?<p>Only the default app will remain.</p>",
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Reset',
+          role: 'Reset',
+          handler: () => {
+            this.configService.reset().then(() => {
+              this.getAppsInfo();
+            })
+          }
+        }]
+    });
+    alert.present();
   }
 
   constructor(
@@ -106,6 +134,7 @@ export class SettingsPage {
     private refreshService: RefreshService,
     public modalController: ModalController,
     private utils: Utils,
-    private configService: ConfigService) {
+    private configService: ConfigService,
+    private alertCtrl: AlertController) {
   }
 }

@@ -17,7 +17,7 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 
 export class ConfigData {
-    private currentId: string = this.getDefaltId();
+    private currentId: string = '';
     private IDs: AppId[];
 
     getCurrentId(): string {
@@ -37,48 +37,46 @@ export class ConfigData {
     }
 
     getDefaltId(): string {
-        return '1bpXqkFsjrKYHWGi69FGcfD8uFNFJ9yyWhDK0D_oqEU4';
+        return '1W0K8HC85gmHvp3fX6eJZCBTL4miTgsLI2ntqW4Sk7ZE';
     }
 }
 
 export class ConfigService {
 
-    private conigData: ConfigData;
+    private configData: ConfigData;
     private storage: Storage;
 
     constructor() {
         console.log("constructor...");
-        this.conigData = new ConfigData();
+        this.configData = new ConfigData();
         this.storage = new Storage(null);
-        this.storage.clear ();        
+        //this.storage.clear ();        
     }
 
-    load(): Promise<boolean> {
+    load(): Promise<ConfigData> {
         let promise: Promise<any> = new Promise((resolve: any) => {
             this.storage.ready().then(() => {
-            }).
-            then(() => {
-                this.loadAppIds();
-            }).then(() => {
-                this.loadCurrentId();
-            }).then(() => {
-                console.log("Storage loaded...");
-                resolve(true);
-            }).catch((err) => {
-                console.log("Error in loading settings...");
-                resolve(false);
+                this.loadAppIds().then(() => {
+                    this.loadCurrentId().then(() => {
+                        resolve(this.configData);
+                        console.log("Storage loaded...");
+                    })
+                })
+            }).catch(() => {
+                console.log("Could not load config!!!");
+                resolve(null);
             })
-        })
+        });
 
         return promise;
     }
 
-    loadAppIds(): any {
+    loadAppIds(): Promise<any> {
         return this.storage.get('ids').then((ids) => {
             if (!ids || ids.length === 0) {
                 this.setDefaultIds();
             } else {
-                this.conigData.setIDs(ids);
+                this.configData.setIDs(ids);
             }
         }).catch(() => {
             this.setDefaultIds();
@@ -87,18 +85,18 @@ export class ConfigService {
 
     setDefaultIds(): void {
 
-        let defaultAppId: AppId = { sheetId: this.conigData.getDefaltId() };
+        let defaultAppId: AppId = { sheetId: this.configData.getDefaltId() };
         let ids: AppId[] = [];
         ids.push(defaultAppId);
         this.setAppIds(ids);
     }
 
-    loadCurrentId(): any {
+    loadCurrentId(): Promise<any> {
         return this.storage.get('currentId').then((currentId: string) => {
             if (!currentId) {
                 this.setToDefaultCurrentId();
             } else {
-                this.conigData.setCurrentId(currentId);
+                this.configData.setCurrentId(currentId);
             }
         }).catch(() => {
             this.setToDefaultCurrentId();
@@ -106,42 +104,54 @@ export class ConfigService {
     }
 
     setToDefaultCurrentId(): void {
-        let defaultId = this.conigData.getDefaltId();
+        let defaultId = this.configData.getDefaltId();
         this.setCurrentId(defaultId);
     }
 
     setCurrentId(currentId: string): void {
-        this.conigData.setCurrentId(currentId);
+        this.configData.setCurrentId(currentId);
         this.storage.set('currentId', currentId);
     }
 
     getCurrentId(): string {
-        return this.conigData.getCurrentId();
+        return this.configData.getCurrentId();
     }
 
     getAppIds(): AppId[] {
-        return this.conigData.getIDs();
+        return this.configData.getIDs();
     }
 
     setAppIds(appIds: AppId[]): any {
-        this.conigData.setIDs(appIds);
+        this.configData.setIDs(appIds);
         this.storage.set('ids', appIds);
     }
 
     getAppInfoUrl(sheetId: string): string {
-        return "https://spreadsheets.google.com/feeds/list/" + this.conigData.getCurrentId() + "/1/public/values?alt=json";
+        return "https://spreadsheets.google.com/feeds/list/" + sheetId + "/1/public/values?alt=json";
     }
 
     getTabsUrl(): string {
-        return "https://spreadsheets.google.com/feeds/list/" + this.conigData.getCurrentId() + "/2/public/values?alt=json";
+        return "https://spreadsheets.google.com/feeds/list/" + this.configData.getCurrentId() + "/2/public/values?alt=json";
     }
 
     getButtonsUrl(): string {
-        return "https://spreadsheets.google.com/feeds/list/" + this.conigData.getCurrentId() + "/3/public/values?alt=json";
+        return "https://spreadsheets.google.com/feeds/list/" + this.configData.getCurrentId() + "/3/public/values?alt=json";
     }
 
     addId(id) {
-        this.conigData.getIDs().push({ "sheetId": id });
-        this.storage.set('ids', this.conigData.getIDs());
+        this.configData.getIDs().push({ "sheetId": id });
+        this.storage.set('ids', this.configData.getIDs());
+    }
+
+    reset(): Promise<any> {
+        let promise: Promise<any> = new Promise((resolve: any) => {
+            this.storage.clear().then(() => {
+                this.load().then(() => {
+                    resolve({});
+                })
+            })
+        })
+
+        return promise;
     }
 }

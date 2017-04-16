@@ -19,12 +19,12 @@ export class Tabs implements Refreshable {
   errorMessage: string;
   screens: ScreenInfo[];
 
-  onRefresh () : void {
+  onRefresh(): void {
     this.screens = undefined;
-    this.getScreens ();
+    this.getScreens();
   }
 
-  getScreens () : void {
+  getScreens(): void {
     this.screensService.getScreens()
       .subscribe(
       screens => {
@@ -33,11 +33,11 @@ export class Tabs implements Refreshable {
       error => this.errorMessage = <any>error);
   }
 
-  constructor(private screensService: ScreenInfoService,  private refreshService: RefreshService) {
+  constructor(private screensService: ScreenInfoService, private refreshService: RefreshService) {
 
     this.tabRoot = TabPageHome;
     this.tabRootSecondary = TabPageSecondary;
-    this.getScreens ();
-    refreshService.add (this);
+    this.getScreens();
+    refreshService.add(this);
   }
 }

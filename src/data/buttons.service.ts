@@ -15,6 +15,6 @@ export class ButtonsService extends DataExtractor<Button> {
     }
 
     getButtons(): Observable<Button[]> {
-        return this.getData ();
+        return this.getData (this.configService.getButtonsUrl ());
     }
 }

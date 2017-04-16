@@ -8,6 +8,7 @@ import { SettingsPage } from '../settings/settings';
 import { Page } from '../page';
 import { ScreenInfoService } from '../../data/screen-info.service';
 import { Refreshable } from '../../common/refreshable';
+import { Comparible } from '../../common/comparible';
 import { RefreshService } from '../../common/refresh.service';
 
 @Component({
@@ -44,22 +45,28 @@ export class TabPageHome extends Page implements Refreshable {
     this.navCtrl.push(SettingsPage);
   }
 
-  onRefresh (): void {
-    this.getButtons();
+  ionViewWillEnter() {
+    // console.log("ionViewWillEnter...");
+    // this.getButtons();
+    // this.refreshService.refreshAll();
   }
 
-  refresh (): void {
-    this.refreshService.refreshAll ();  
+  onRefresh(): void {
+    this.getButtons();    
+  }
+
+  refresh(): void {
+    this.refreshService.refreshAll();
   }
 
   constructor(
-      private _navCtrl: NavController, 
-      private buttonsService: ButtonsService, 
-      private refreshService: RefreshService,
-      private navParams: NavParams) {
+    private _navCtrl: NavController,
+    private buttonsService: ButtonsService,
+    private refreshService: RefreshService,
+    private navParams: NavParams) {
 
-    super (navParams.data.screen);
+    super(navParams.data.screen);
     this.navCtrl = _navCtrl;
-    refreshService.add (this);
+    refreshService.add(this);
   }
 }

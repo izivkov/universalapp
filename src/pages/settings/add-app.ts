@@ -34,7 +34,7 @@ export class AddAppPage {
 
   getApp(sheetId) {
     sheetId = this.urlToId(sheetId);
-    if (!this.verifyId (sheetId)) {
+    if (!sheetId || !this.verifyId (sheetId)) {
       return;
     }
 
@@ -58,7 +58,7 @@ export class AddAppPage {
 
   verifyId (id: string): boolean {
     if (id.length !== 44) {
-      this.utils.showToast ("Invalid URL or ID entered.")
+      // this.utils.showToast ("Invalid URL or ID entered.")
       return false;
     }
 

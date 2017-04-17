@@ -15,24 +15,6 @@ export class DataExtractor<T> {
             .catch(this.handleError);
     }
 
-    private dataObs$ = new ReplaySubject(1);
-
-    protected getDataNew (url?: string, forceRefresh?: boolean) {
-        // If the Subject was NOT subscribed before OR if forceRefresh is requested 
-        if (!this.dataObs$.observers.length || forceRefresh) {
-            this.http.get(url || this.url).subscribe(
-                data => this.dataObs$.next(data),
-                error => {
-                    this.dataObs$.error(error);
-                    // Recreate the Observable as after Error we cannot emit data anymore
-                    this.dataObs$ = new ReplaySubject(1);
-                }
-            );
-        }
-
-        return this.dataObs$;
-    }
-
     private extractData(res: Response) {
         let body = res.json();
         var data = body.feed.entry;

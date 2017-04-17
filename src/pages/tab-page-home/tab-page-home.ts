@@ -8,7 +8,6 @@ import { SettingsPage } from '../settings/settings';
 import { Page } from '../page';
 import { ScreenInfoService } from '../../data/screen-info.service';
 import { Refreshable } from '../../common/refreshable';
-import { Comparible } from '../../common/comparible';
 import { RefreshService } from '../../common/refresh.service';
 
 @Component({
@@ -43,12 +42,6 @@ export class TabPageHome extends Page implements Refreshable {
 
   settings(): void {
     this.navCtrl.push(SettingsPage);
-  }
-
-  ionViewWillEnter() {
-    // console.log("ionViewWillEnter...");
-    // this.getButtons();
-    // this.refreshService.refreshAll();
   }
 
   onRefresh(): void {

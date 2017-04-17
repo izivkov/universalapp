@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
-import { ReplaySubject } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -11,7 +10,7 @@ export class DataExtractor<T> {
 
     protected getData (url?: string): Observable<T[]> {
         return this.http.get(url || this.url)
-            .map(this.extractData).share()
+            .map(this.extractData)
             .catch(this.handleError);
     }
 

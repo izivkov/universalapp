@@ -50,7 +50,6 @@ export class ConfigService {
         console.log("constructor...");
         this.configData = new ConfigData();
         this.storage = new Storage(null);
-        //this.storage.clear ();        
     }
 
     load(): Promise<ConfigData> {
@@ -59,7 +58,6 @@ export class ConfigService {
                 this.loadAppIds().then(() => {
                     this.loadCurrentId().then(() => {
                         resolve(this.configData);
-                        console.log("Storage loaded...");
                     })
                 })
             }).catch(() => {

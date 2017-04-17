@@ -12,8 +12,6 @@ import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { ConfigService } from '../app/config.service';
 
-// export function loadConfig(config: ConfigService) {config.load();}
-
 export function loadConfig(config: ConfigService): Function {
   return () => config.load();
 }

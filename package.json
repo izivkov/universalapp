@@ -1,6 +1,6 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
+  "name": "universal-app",
+  "author": "Ivo Zivkov",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
@@ -42,5 +42,5 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "painManagement: An Ionic project"
+  "description": "Universal Application from Google Spreadsheets"
 }

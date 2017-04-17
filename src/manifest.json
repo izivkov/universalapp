@@ -1,6 +1,6 @@
 {
-  "name": "Pain Management",
-  "short_name": "PainManagement",
+  "name": "Univercsal App",
+  "short_name": "UniversalApp",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

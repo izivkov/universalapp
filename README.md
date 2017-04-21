@@ -37,7 +37,7 @@ The app was developed under Linux, so this document may not exactly match if you
 
 As a pre-requirement you need to have insatlled the Java SDK and Android SDK. You can get the Android SDK from [here](https://developer.android.com/studio/index.html#downloads). 
 
-At a minimum, you must have the following android SDlpackages installed:
+At a minimum, you must have the following android SDK packages installed:
 
       Path                 | Version | Description                  | Location             
       -------              | ------- | -------                      | -------              

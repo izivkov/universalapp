@@ -36,6 +36,20 @@ Since this app was developed on the [ionic](http://ionicframework.com/) framewor
 
 The app was developed under Linux, so this document may not exactly match if you are developing under another OS.
 
+    npm install -g ionic cordova
+    ionic start UniversalApp
+
+Then clone the git repository:
+
+    git clone https://github.com/izivkov/UniversalApp.git
+
+This will check out the code in a folder UniversalApp.
+
+    cd UniversalApp
+    npm install
+    mkdir www
+    ionic platform add android
+    
 ### Creating your own sheet app
 
 The process is as follows:

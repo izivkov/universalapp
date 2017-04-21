@@ -63,7 +63,7 @@ This will check out the code in a folder UniversalApp.
     ionic platform add android
     ionic build android
     
-Now in direstory 
+Now in directory 
       
       [ROOT-OF-PROJECT]/platforms/android
       

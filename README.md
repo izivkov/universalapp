@@ -6,7 +6,7 @@ By: Ivo Zivkov, izivkov@gmail.com
 
 ### Introduction ###
 
-This is a simple hybrid mobile application allowing users to customise it completely to their requirements. Instead of a traditional database for the back-end, it uses [Google Sheets](https://www.google.ca/sheets/about/) to store data, content, behaviour and styling information. The app can keep a list of Google Sheets and switch between them, in effect switching to a different app.
+This is a simple hybrid mobile application allowing users to customise it completely to their requirements. Instead of a traditional database for the back-end, it uses [Google Sheets](https://www.google.ca/sheets/about) to store data, content, behaviour and styling information. The app can keep a list of Google Sheets and switch between them, in effect switching to a different app.
 
 Some examples of applications which can be created are:
 
@@ -29,15 +29,15 @@ There is always a balance between flexibility and ease of use. This app is geare
 - There is a specific structure: One or more tabs, Buttons on the Home Tab, Secondary Screen invoked by pressing the buttons.
 - The data is read-only. This means we cannot update the Google Sheets from the app. This was done to simplify end-user permissions.
 
-
 ### Environment
 
 Since this app was developed on the [ionic](http://ionicframework.com/) framework, follow [these](https://ionicframework.com/docs/intro/installation/) instructions to setup your environment.
 
 The app was developed under Linux, so this document may not exactly match if you are developing under another OS.
 
+As a pre-requirement you need to have insatlled the Java SDK and Android SDK. You can get the Android SDK from [here](https://developer.android.com/studio/index.html#downloads). 
+
     npm install -g ionic cordova
-    ionic start UniversalApp
 
 Then clone the git repository:
 
@@ -49,6 +49,7 @@ This will check out the code in a folder UniversalApp.
     npm install
     mkdir www
     ionic platform add android
+    ionic build android
     
 ### Creating your own sheet app
 
@@ -225,5 +226,5 @@ A debug and a release APKs will be generated into directory:
 
 ### Future Work
 
-This project only creates Android APK. We inviter people with iOS background to add support for iPhone. Since this is a hybrid app, the changes should be minor.
+This project only creates Android APK. We invite developers with iOS background to add support for iPhone. Since this is a hybrid app, the changes should be minor.
 

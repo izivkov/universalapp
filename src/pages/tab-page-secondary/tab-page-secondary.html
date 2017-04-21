@@ -9,7 +9,7 @@
 
   <ion-card>
     <ion-card-content>
-      <img src={{screen.image}} />
+      <img *ngIf="screen.image" src={{screen.image}} />
       <span class="large" [innerHTML]="screen.text"></span>
 
     </ion-card-content>

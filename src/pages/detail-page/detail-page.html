@@ -11,7 +11,7 @@
         <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(button.video)" style="width: 100%; height: 100%" frameborder="0"></iframe>
       </div>
 
-      <img src="{{button.image}}" />
+      <img *ngIf="button.image" src="{{button.image}}" />
       <ion-card-title>
         {{button.name}}
       </ion-card-title>

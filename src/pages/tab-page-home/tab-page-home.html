@@ -17,7 +17,7 @@
 
   <ion-card>
     <ion-card-content>
-      <img src={{screen.image}} />
+      <img *ngIf="screen.image" src={{screen.image}} />
       <div *ngFor="let button of buttons">
         <btn [style]=button.style [name]=button.name [color]=button.color [size]=button.size [shape]=button.shape (click)="onClick(button.name)"></btn>
       </div>

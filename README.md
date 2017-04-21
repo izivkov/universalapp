@@ -189,7 +189,7 @@ You can also reset the the settings to default by pressing the ![](imgs/20170420
 
 To build the APK, change directory to:
 
-		[ROOTDIR]/platforms/android
+		[ROOT-OF-PROJECT]/platforms/android
 
 and enter:
 
@@ -197,9 +197,10 @@ and enter:
 
 A debug and a release APKs will be generated into directory:
 
-		[ROOTDIR]/platforms/android/build/outputs/apk
+		[ROOT-OF-PROJECT]/platforms/android/build/outputs/apk
 
 ### Future Work
+
 This project only creates Android APK. We inviter people with iOS background to add support for iPhone. Since this is a hybrid app, the changes should be minor.
  
  

@@ -1,6 +1,6 @@
 <ion-content padding>
         <ion-label color="primary">Paste Google sheet URL or ID:</ion-label>
-        <input type="text" [(ngModel)]="appId" placeholder="Google sheet URL or ID" (keyup)="getApp(appId)" />
+        <input type="text" [(ngModel)]="appId" placeholder="Google sheet URL or ID" (ngModelChange)="getApp(appId)" />
 
     <div *ngIf="app">
         <ion-thumbnail item-left>

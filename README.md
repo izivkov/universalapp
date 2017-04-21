@@ -37,6 +37,18 @@ The app was developed under Linux, so this document may not exactly match if you
 
 As a pre-requirement you need to have insatlled the Java SDK and Android SDK. You can get the Android SDK from [here](https://developer.android.com/studio/index.html#downloads). 
 
+At a minimum, you must have the following android SDlpackages installed:
+
+      Path                 | Version | Description                  | Location             
+      -------              | ------- | -------                      | -------              
+      build-tools;19.1.0   | 19.1.0  | Android SDK Build-Tools 19.1 | build-tools/19.1.0/  
+      platform-tools       | 25.0.4  | Android SDK Platform-Tools   | platform-tools/      
+      tools                | 26.0.1  | Android SDK Tools 26.0.1     | tools/               
+
+You also need [gradle 3.5](https://gradle.org/install).
+
+Now install ionic and cordova:
+
     npm install -g ionic cordova
 
 Then clone the git repository:
@@ -50,6 +62,27 @@ This will check out the code in a folder UniversalApp.
     mkdir www
     ionic platform add android
     ionic build android
+    
+Now in direstory 
+      
+      [ROOT-OF-PROJECT]/platforms/android
+      
+you can run:
+
+      greadle build
+
+To build the APK, change directory to:
+
+		[ROOT-OF-PROJECT]/platforms/android
+
+and enter:
+
+    gradle wrapper
+		./gradlew build
+
+A debug and a release APKs will be generated into directory:
+
+		[ROOT-OF-PROJECT]/platforms/android/build/outputs/apk
     
 ### Creating your own sheet app
 
@@ -170,15 +203,7 @@ and the values in your app will be updated with the current price.
 
 - *size* - size of the button. Options are: *small*, *default* and *large*.
 
-
-
-
-
-
-
-
-
- Settings
+### Settings
 
 This page allows the user to select the sheet app to use, add and delete. Each Google Spreadsheet defines a new sheet app.
 
@@ -209,20 +234,6 @@ To delete a sheet app, long-press on any of the sheets apps in the list, until c
 *Note that you are only deleting references to the spreadsheet from the mobile app, not the actual scpreadsheets.*
 
 You can also reset the the settings to default by pressing the ![](imgs/20170420-211724.png) button. This will remove all the added apps except the default one.
-
-### Generating the Android APK
-
-To build the APK, change directory to:
-
-		[ROOT-OF-PROJECT]/platforms/android
-
-and enter:
-
-		./gradlew build
-
-A debug and a release APKs will be generated into directory:
-
-		[ROOT-OF-PROJECT]/platforms/android/build/outputs/apk
 
 ### Future Work
 

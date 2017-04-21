@@ -86,7 +86,7 @@ To build the APK, change directory to:
 and enter:
 
     gradle wrapper
-		./gradlew build
+    ./gradlew build
 
 A debug and a release APKs will be generated into directory:
 

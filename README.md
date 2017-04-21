@@ -90,7 +90,7 @@ and enter:
 
 A debug and a release APKs will be generated into directory:
 
-		[ROOT-OF-PROJECT]/platforms/android/build/outputs/apk
+    [ROOT-OF-PROJECT]/platforms/android/build/outputs/apk
     
 ### Creating your own sheet app
 
@@ -102,7 +102,7 @@ The process is as follows:
 
 ![](imgs/20170418-111348.png)
 
-		Select Fie -> Make a copy
+		Fie -> Make a copy
 
 ![](imgs/20170418-112053.png)
 

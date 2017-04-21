@@ -1,7 +1,7 @@
 {
   "name": "universal-app",
   "author": "Ivo Zivkov",
-  "homepage": "http://ionicframework.com/",
+  "homepage": "https://github.com/izivkov/UniversalApp",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

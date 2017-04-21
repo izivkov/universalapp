@@ -15,7 +15,7 @@ Some examples of applications which can be created are:
 - Weather App
 - Law Practice Mobile Website
 - Recipes
-...
+
 A lot of the logic for the app can be implemented in the Google Sheets through sheet formulas, referring to oher sheets for the data, [scripting](https://developers.google.com/apps-script/overview), etc.
 
 ### Nomenclature

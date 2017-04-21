@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
-# universalapp
+# UniversalApp
 
->>>>>>> 3e455b3193b30d72f84504015576e6efcc7dbd45
 ## Universal Mobile App driven by Google Sheets ##
 Monday, 17. April 2017 10:01PM 
 By: Ivo Zivkov, izivkov@gmail.com

@@ -73,6 +73,12 @@ you can run:
 
       gradle build
 
+You can try the app in your browser. From the root directory of you project enter:
+
+      ionic serve
+      
+... and point your browser to **localhost:8100**
+
 To build the APK, change directory to:
 
 		[ROOT-OF-PROJECT]/platforms/android

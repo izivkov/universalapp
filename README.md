@@ -30,13 +30,13 @@ There is always a balance between flexibility and ease of use. This app is geare
 - The data is read-only. This means we cannot update the Google Sheets from the app. This was done to simplify end-user permissions.
 
 
-###Environment
+### Environment
 
 Since this app was developed on the [ionic](http://ionicframework.com/) framework, follow [these](https://ionicframework.com/docs/intro/installation/) instructions to setup your environment.
 
 The app was developed under Linux, so this document may not exactly match if you are developing under another OS.
 
-###Creating your own sheet app
+### Creating your own sheet app
 
 The process is as follows:
 
@@ -66,7 +66,7 @@ Copy the link and send it to your mobile device in an email.
 
 4. Interactively make changes to your Google Sheet and refresh the app the see your changes.
 
-###Application Structure
+### Application Structure
 
 Although we call this an "Universal App", it has some specific structure:
 
@@ -80,7 +80,7 @@ Although we call this an "Universal App", it has some specific structure:
 
 Do not confuse Secondary screens with Tabs. Tabs top-level screens. Secondary screens are pop-ups over the home screen.
 
-###The Google Spreadsheet
+### The Google Spreadsheet
 
 All this functionality is driven by the backing Google Spreadsheet. Here we describe what this spreadsheet contains:
 
@@ -155,7 +155,15 @@ and the values in your app will be updated with the current price.
 
 - *size* - size of the button. Options are: *small*, *default* and *large*.
 
-### Settings
+
+
+
+
+
+
+
+
+ Settings
 
 This page allows the user to select the sheet app to use, add and delete. Each Google Spreadsheet defines a new sheet app.
 

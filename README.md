@@ -26,7 +26,7 @@ Since the app can itself refer to multiple Google Sheets which define apps, the 
 
 There is always a balance between flexibility and ease of use. This app is geared toward simplicity, and therefore we have applied some constraints:
 
-- There is a specific structure: One or more tabs, Buttons on the Home Tab, Secondary Screen invoked by pressing the buttons.
+- There is a specific structure: This ia a "tabbed" app with one or more Tabs. The Home screen contain Buttons which bring up Seconday screens.
 - The data is read-only. This means we cannot update the Google Sheets from the app. This was done to simplify end-user permissions.
 
 ### Environment
@@ -126,7 +126,7 @@ Copy the link and send it to your mobile device in an email.
 
 Although we call this an "Universal App", it has some specific structure:
 
-- this is a tabbed app - it has one or more tabs, defined in the Google Spreadsheet.
+- this is a tabbed app - it has ore tabs, defined in the Google Spreadsheet.
 
 - The first tab is assumed to be a "Home Screen".
 

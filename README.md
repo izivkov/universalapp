@@ -33,6 +33,8 @@ There is always a balance between flexibility and ease of use. This app is geare
 
 Since this app was developed on the [ionic](http://ionicframework.com/) framework, follow [these](https://ionicframework.com/docs/intro/installation/) instructions to setup your environment.
 
+As IDE, we used the [Microsoft Visual Code](https://en.wikipedia.org/wiki/Visual_Studio_Code) tool, which works really well with TypeScript and Angular projects.
+
 The app was developed under Linux, so this document may not exactly match if you are developing under another OS.
 
 As a pre-requirement you need to have insatlled the Java SDK and Android SDK. You can get the Android SDK from [here](https://developer.android.com/studio/index.html#downloads). 
@@ -69,7 +71,7 @@ Now in directory
       
 you can run:
 
-      greadle build
+      gradle build
 
 To build the APK, change directory to:
 

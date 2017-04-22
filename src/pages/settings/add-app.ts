@@ -30,8 +30,6 @@ export class AddAppPage {
     }
   }
 
-  // https://docs.google.com/spreadsheets/d/1bpXqkFsjrKYHWGi69FGcfD8uFNFJ9yyWhDK0D_oqEU4/pubhtml
-
   getApp(sheetId) {
     sheetId = this.urlToId(sheetId);
     if (!sheetId || !this.verifyId (sheetId)) {

@@ -2,18 +2,6 @@ import { Injectable } from '@angular/core';
 import { AppId } from '../data/app-id';
 import { Storage } from '@ionic/storage';
 
-/*
-        let IDs: any[] = [{
-            "sheetId": "1bpXqkFsjrKYHWGi69FGcfD8uFNFJ9yyWhDK0D_oqEU4"
-        },
-        {
-            "sheetId": "1W0K8HC85gmHvp3fX6eJZCBTL4miTgsLI2ntqW4Sk7ZE"
-        },
-        {
-            "sheetId": "12jFxbHU6Bix95Q_jnrYWRQu5kNExv52MFNIJi96gRzo"
-        }];
-*/
-
 @Injectable()
 
 export class ConfigData {

@@ -16,7 +16,7 @@ Some examples of applications which can be created are:
 - Law Practice Mobile Website
 - Recipes
 
-Here are some screenshots of sample applications which can be created:
+Here are some screenshots of template applications which can be created:
 
 ![](imgs/20170421-235033.png)![](imgs/20170421-235127.png)![](imgs/20170421-235145.png)![](imgs/20170421-235158.png)
 
@@ -30,7 +30,7 @@ Since the app can itself refer to multiple Google Sheets which define apps, the 
 
 There is always a balance between flexibility and ease of use. This app is geared toward simplicity, and therefore we have applied some constraints:
 
-- There is a specific structure: This ia a "tabbed" app with one or more Tabs. The Home screen contain Buttons which bring up Seconday screens.
+- There is a specific structure: This ia a "tabbed" app with one or more Tabs. The Home screen contain Buttons which bring up Detail screens.
 - The data is read-only. This means we cannot update the Google Sheets from the app. This was done to simplify end-user permissions.
 
 ### Environment
@@ -130,15 +130,15 @@ Copy the link and send it to your mobile device in an email.
 
 Although we call this an "Universal App", it has some specific structure:
 
-- this is a tabbed app - it has ore tabs, defined in the Google Spreadsheet.
+- This is a tabbed app - it has one or more tabs, defined in the Google Spreadsheet.
 
 - The first tab is assumed to be a "Home Screen".
 
-- The Home screen has some buttons, which bring up "Secondary Screens". It can also contain an image.
+- The Home screen has some buttons, which bring up "Detail Screens". It can also contain an image.
 
-- Secondary screens can contain HTML text, Images and YouTube videos
+- Detail screens can contain HTML text, Images and YouTube videos
 
-Do not confuse Secondary screens with Tabs. Tabs top-level screens. Secondary screens are pop-ups over the home screen.
+Do not confuse Detail screens with Tabs. Tabs top-level screens. Detail screens are pop-ups over the home screen.
 
 ### The Google Spreadsheet
 
@@ -184,19 +184,19 @@ Let us go over each of the sheet tabs.
 
 - *hidden* - boolean (yes or no) value to indicate if we like to show or hide that tab. Default to 'no' (do not hide).
 
-**buttons** - defines the buttons on the home tab, and the corresponding secondary screens they bring up. It contains the following columns:
+**buttons** - defines the buttons on the home tab, and the corresponding detail screens they bring up. It contains the following columns:
 
 - *name* - the name of a button.
 
-- *text* - this is the HTML text to be displayed in the new secondary screen which the button will bring up. Note that the text column can contain HTML tags. Also note, that we have the full power of Google Sheets behind us, so the text does not need to be static. It can refer to other columns, and even to other sheet tabs or spreadsheets. You can also use Google API to get information from an outside source or use Google Scripts to provide information. For example, to display the current price of SPY index, you can put the formula:
+- *text* - this is the HTML text to be displayed in the new detail screen which the button will bring up. Note that the text column can contain HTML tags. Also note, that we have the full power of Google Sheets behind us, so the text does not need to be static. It can refer to other columns, and even to other sheet tabs or spreadsheets. You can also use Google API to get information from an outside source or use Google Scripts to provide information. For example, to display the current price of SPY index, you can put the formula:
 
 		="SPY price: " & GOOGLEFINANCE("SPY", "price") & " USD"
 
 and the values in your app will be updated with the current price.
 
-- *image* - image to be displayed in the secondary page
+- *image* - image to be displayed in the Detail page
 
-- *video* - this is an URL of a YouTube video to be shown on the secondary screen. To prevent [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) issues, get the YouTube URL from the embedded code. Right-click on the YouTube video and select "Embedded Code". Then paste in any editor, and select the URL part only. Should look something like this:
+- *video* - this is an URL of a YouTube video to be shown on the detail screen. To prevent [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) issues, get the YouTube URL from the embedded code. Right-click on the YouTube video and select "Embedded Code". Then paste in any editor, and select the URL part only. Should look something like this:
 
 		https://www.youtube.com/embed/nDirbacjY
 

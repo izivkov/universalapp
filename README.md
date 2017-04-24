@@ -13,7 +13,7 @@ Some examples of applications which can be created are:
 - Stock Portfolio
 - Weather App
 - Company Web Sites
-- Varous RSS Feeds
+- Various RSS Feeds
 
 Here are some screenshots of sample applications which can be created:
 

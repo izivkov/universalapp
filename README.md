@@ -105,7 +105,7 @@ The process is as follows:
 
 ![](imgs/20170418-111348.png)
 
-		Fie -> Make a copy
+		File -> Make a copy
 
 ![](imgs/20170418-112053.png)
 

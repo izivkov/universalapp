@@ -10,11 +10,10 @@ This is a simple hybrid mobile application allowing users to define its function
 
 Some examples of applications which can be created are:
 
-- Store Specials
 - Stock Portfolio
 - Weather App
-- Law Practice Mobile Website
-- Recipes
+- Company Web Sites
+- Varous RSS Feeds
 
 Here are some screenshots of sample applications which can be created:
 

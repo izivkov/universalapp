@@ -16,7 +16,7 @@ Some examples of applications which can be created are:
 - Law Practice Mobile Website
 - Recipes
 
-Here are some screenshots of template applications which can be created:
+Here are some screenshots of sample applications which can be created:
 
 ![](imgs/20170421-235033.png)![](imgs/20170421-235127.png)![](imgs/20170421-235145.png)![](imgs/20170421-235158.png)
 

@@ -6,7 +6,7 @@ By: Ivo Zivkov, izivkov@gmail.com
 
 ### Introduction ###
 
-This is a simple hybrid mobile application allowing users to customise it completely to their requirements. Instead of a traditional database for the back-end, it uses [Google Sheets](https://www.google.ca/sheets/about) to store data, content, behaviour and styling information. The app can keep a list of Google Sheets and switch between them, in effect switching to a different app.
+This is a simple hybrid mobile application allowing users to define its functionality by only manipulating its backing Google Spreadsheet. Instead of a traditional database for the back-end, it uses [Google Sheets](https://www.google.ca/sheets/about) to store data, content, behaviour and styling information. The app can keep a list of Google Sheets and switch between them, in effect switching to a different app. 
 
 Some examples of applications which can be created are:
 

@@ -9,10 +9,11 @@ import { RefreshService } from '../../common/refresh.service';
 import { ModalController, AlertController } from 'ionic-angular';
 import { AddAppPage } from './add-app';
 import { Utils } from '../../common/utils';
+import { Vibration } from '@ionic-native/vibration';
 
 @Component({
   templateUrl: 'settings.html',
-  providers: [AppInfoService, RefreshService, Utils]
+  providers: [AppInfoService, RefreshService, Utils, Vibration]
 })
 
 export class SettingsPage {
@@ -128,6 +129,11 @@ export class SettingsPage {
     alert.present();
   }
 
+  longPress(): void {
+    this.selectionMode = true;
+    this.vibration.vibrate(100);
+  }
+
   constructor(
     public navCtrl: NavController,
     private appInfoService: AppInfoService,
@@ -135,6 +141,7 @@ export class SettingsPage {
     public modalController: ModalController,
     private utils: Utils,
     private configService: ConfigService,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private vibration: Vibration) {
   }
 }

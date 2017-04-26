@@ -17,7 +17,7 @@
 <ion-content padding>
 
   <h2>Select App:</h2>
-  <div *ngFor="let app of apps" (press)="selectionMode = true" (click)="select(app)">
+  <div *ngFor="let app of apps" (press)="longPress ()" (click)="select(app)">
     <ion-list>
       <ion-item [ngStyle]="getCurrentId () === app.sheetId  && { 'background-color':'#607D8B', 'color': 'white'}">
 

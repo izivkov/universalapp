@@ -17,7 +17,7 @@ Some examples of applications which can be created are:
 
 Here are some screenshots of sample applications which can be created:
 
-![](imgs/sample-app.png=250x)![](imgs/sample-app-1.png=250x)![](imgs/sample-app-2.png=250x)![](imgs/sample-app-3.png=250x)
+![](imgs/sample-app.png =250x)![](imgs/sample-app-1.png =250x)![](imgs/sample-app-2.png =250x)![](imgs/sample-app-3.png =250x)
 
 A lot of the logic for the app can be implemented in the Google Sheets through sheet formulas, referring to oher sheets for the data, [scripting](https://developers.google.com/apps-script/overview), etc.
 

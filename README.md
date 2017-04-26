@@ -6,19 +6,18 @@ By: Ivo Zivkov, izivkov@gmail.com
 
 ### Introduction ###
 
-This is a simple hybrid mobile application allowing users to customise it completely to their requirements. Instead of a traditional database for the back-end, it uses [Google Sheets](https://www.google.ca/sheets/about) to store data, content, behaviour and styling information. The app can keep a list of Google Sheets and switch between them, in effect switching to a different app.
+This is a simple hybrid mobile application allowing users to define its functionality by only manipulating its backing Google Spreadsheet. Instead of a traditional database for the back-end, it uses [Google Sheets](https://www.google.ca/sheets/about) to store data, content, behaviour and styling information. The app can keep a list of Google Sheets and switch between them, in effect switching to a different app. 
 
 Some examples of applications which can be created are:
 
-- Store Specials
 - Stock Portfolio
 - Weather App
-- Law Practice Mobile Website
-- Recipes
+- Company Web Sites
+- Various RSS Feeds
 
-Here are some screenshots of template applications which can be created:
+Here are some screenshots of sample applications which can be created:
 
-![](imgs/20170421-235033.png)![](imgs/20170421-235127.png)![](imgs/20170421-235145.png)![](imgs/20170421-235158.png)
+![](imgs/sample-app.png)![](imgs/sample-app-1.png)![](imgs/sample-app-2.png)![](imgs/sample-app-3.png)
 
 A lot of the logic for the app can be implemented in the Google Sheets through sheet formulas, referring to oher sheets for the data, [scripting](https://developers.google.com/apps-script/overview), etc.
 
@@ -106,7 +105,7 @@ The process is as follows:
 
 ![](imgs/20170418-111348.png)
 
-		Fie -> Make a copy
+		File -> Make a copy
 
 ![](imgs/20170418-112053.png)
 

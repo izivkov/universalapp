@@ -41,16 +41,22 @@ export class ConfigService {
 
     load(): Promise<ConfigData> {
 
-        let promise: Promise<any> = new Promise((resolve: any) => { 
-            Promise.all([
-            this.storage.ready(),
-            this.loadCurrentId(),
-            this.loadCurrentId()]).then(() => {
-                resolve(this.configData);
-            }).catch(() => {
-                console.log("Could not load config!!!");
-                resolve(null);
-            });
+        var a = performance.now();
+
+        let promise: Promise<any> = new Promise((resolve: any) => {
+            this.storage.ready().then(() => {
+                console.log("storage ready..." + (performance.now()-a)); 
+
+                Promise.all([
+                    this.loadCurrentId(),
+                    this.loadAppIds()]).then(() => {
+                        console.log("all loaded..." + (performance.now()-a)); 
+                        resolve(this.configData);
+                    }).catch(() => {
+                        console.log("Could not load config!!!");
+                        resolve(null);
+                    });
+            })
         });
 
         return promise;

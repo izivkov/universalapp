@@ -41,8 +41,6 @@ export class ConfigService {
 
     load(): Promise<ConfigData> {
 
-        var a = performance.now();
-
         let promise: Promise<any> = new Promise((resolve: any) => {
             this.storage.ready().then(() => {
 

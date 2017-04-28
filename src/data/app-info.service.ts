@@ -19,12 +19,24 @@ export class AppInfoService extends DataExtractor<AppInfo> {
         return this.getData(url);
     }
 
-    getAppsInfo(urls: string[]): Observable<AppInfo[][]> {
+    getAppsInfo_ORIG (urls: string[]): Observable<AppInfo[][]> {
 
         let observables: Observable<AppInfo[]>[] = [];
 
         for (let url of urls) {
             observables.push (this.getAppInfo(url));
+        }
+
+        return Observable.forkJoin(observables);
+    }
+
+    getAppsInfo(urls: string[]): Observable<AppInfo[][]> {
+
+        let observables: Observable<AppInfo[]>[] = [];
+
+        for (let url of urls) {
+            let observable : Observable<AppInfo[]> = this.getAppInfo(url);
+            observables.push (observable);
         }
 
         return Observable.forkJoin(observables);

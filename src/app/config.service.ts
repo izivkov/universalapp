@@ -35,23 +35,22 @@ export class ConfigService {
     private storage: Storage;
 
     constructor() {
-        console.log("constructor...");
         this.configData = new ConfigData();
         this.storage = new Storage(null);
     }
 
     load(): Promise<ConfigData> {
-        let promise: Promise<any> = new Promise((resolve: any) => {
-            this.storage.ready().then(() => {
-                this.loadAppIds().then(() => {
-                    this.loadCurrentId().then(() => {
-                        resolve(this.configData);
-                    })
-                })
+
+        let promise: Promise<any> = new Promise((resolve: any) => { 
+            Promise.all([
+            this.storage.ready(),
+            this.loadCurrentId(),
+            this.loadCurrentId()]).then(() => {
+                resolve(this.configData);
             }).catch(() => {
                 console.log("Could not load config!!!");
                 resolve(null);
-            })
+            });
         });
 
         return promise;

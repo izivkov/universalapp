@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
 import { AppInfo } from '../../data/app-info';
-import { AppId } from '../../data/app-id';
 import { Renderer } from '@angular/core';
 import { AppInfoService } from '../../data/app-info.service';
 import { ConfigService } from '../../app/config.service';
@@ -14,9 +13,8 @@ import { Utils } from '../../common/utils';
 })
 
 export class AddAppPage {
-  appIds: AppId[];
+  appsInfo: AppInfo[];
   app: AppInfo;
-  appId: string = "";
   errorMessage: string;
 
   constructor(public viewCtrl: ViewController, private appInfoService: AppInfoService,
@@ -26,7 +24,7 @@ export class AddAppPage {
 
   ngOnInit() {
     if (this.navParams.data) {
-      this.appIds = this.navParams.data.appIds;
+      this.appsInfo = this.navParams.data.appsInfo;
     }
   }
 
@@ -56,13 +54,12 @@ export class AddAppPage {
 
   verifyId (id: string): boolean {
     if (id.length !== 44) {
-      // this.utils.showToast ("Invalid URL or ID entered.")
       return false;
     }
 
-    for (let appId of this.appIds) {
-      if (id === appId.sheetId) {
-        this.utils.showToast ("This ID already exists.")
+    for (let appInfo of this.appsInfo) {
+      if (id === appInfo.sheetId) {
+        this.utils.showToast ("This App already exists.")
         return false;
       }
     }
@@ -78,8 +75,8 @@ export class AddAppPage {
     this.close();
   }
 
-  add (sheetId): void {
-    this.configService.addId (sheetId);
-    this.close(this.app.sheetId);
+  add (app: AppInfo): void {
+    this.configService.addAppsInfo (app);
+    this.close(app.sheetId);
   }
 }

@@ -1,12 +1,22 @@
-import { Injectable } from '@angular/core';
-import { AppId } from '../data/app-id';
+import { Injectable, Inject } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { AppInfo } from '../data/app-info';
+import { AppInfoService } from '../data/app-info.service';
 
 @Injectable()
 
 export class ConfigData {
     private currentId: string = '';
-    private IDs: AppId[];
+    private appsInfo: AppInfo[];
+    private defaultApp: AppInfo;
+
+    getDefaultApp(): AppInfo {
+        return this.defaultApp;
+    }
+
+    setDefaultApp(app: AppInfo): void {
+        this.defaultApp = app;
+    }
 
     getCurrentId(): string {
         return this.currentId;
@@ -16,15 +26,15 @@ export class ConfigData {
         this.currentId = id;
     }
 
-    getIDs(): AppId[] {
-        return this.IDs;
+    getAppsInfo(): AppInfo[] {
+        return this.appsInfo;
     }
 
-    setIDs(ids: AppId[]) {
-        this.IDs = ids;
+    setAppsInfo(appsInfo: AppInfo[]): void {
+        this.appsInfo = appsInfo;
     }
 
-    getDefaltId(): string {
+    getDefaultId(): string {
         return '1W0K8HC85gmHvp3fX6eJZCBTL4miTgsLI2ntqW4Sk7ZE';
     }
 }
@@ -33,8 +43,10 @@ export class ConfigService {
 
     private configData: ConfigData;
     private storage: Storage;
+    errorMessage: string;
 
-    constructor() {
+    constructor( @Inject(AppInfoService) private appInfoService: AppInfoService) {
+
         this.configData = new ConfigData();
         this.storage = new Storage(null);
     }
@@ -44,38 +56,68 @@ export class ConfigService {
         let promise: Promise<any> = new Promise((resolve: any) => {
             this.storage.ready().then(() => {
 
-                Promise.all([
-                    this.loadCurrentId(),
-                    this.loadAppIds()]).then(() => {
-                        resolve(this.configData);
-                    }).catch(() => {
-                        console.log("Could not load config!!!");
-                        resolve(null);
-                    });
-            })
+                // this.reset();
+                this.getDefaultApp().then(() => {
+
+                    Promise.all([
+                        this.loadCurrentId(),
+                        this.loadApps()]).then(() => {
+                            resolve(this.configData);
+                        }).catch(() => {
+                            console.log("Could not load config!!!");
+                            resolve(null);
+                        });
+                });
+            });
         });
 
         return promise;
     }
 
-    loadAppIds(): Promise<any> {
-        return this.storage.get('ids').then((ids) => {
-            if (!ids || ids.length === 0) {
-                this.setDefaultIds();
-            } else {
-                this.configData.setIDs(ids);
-            }
-        }).catch(() => {
-            this.setDefaultIds();
+    getDefaultApp(): Promise<any> {
+
+        let promise: Promise<any> = new Promise((resolve: any) => {
+            this.appInfoService.getAppInfo(this.getAppInfoUrl(this.configData.getDefaultId())).subscribe(
+                app => {
+                    this.configData.setDefaultApp(app[0]);
+                    resolve({});
+                },
+                error => {
+                    this.errorMessage = <any>error;
+                    resolve({});
+                })
         });
+
+        return promise;
     }
 
-    setDefaultIds(): void {
+    loadApps(): Promise<any> {
 
-        let defaultAppId: AppId = { sheetId: this.configData.getDefaltId() };
-        let ids: AppId[] = [];
-        ids.push(defaultAppId);
-        this.setAppIds(ids);
+        let promise: Promise<any> = new Promise((resolve: any) => {
+            this.storage.get('appsinfo').then((appsInfo) => {
+                if (!appsInfo || appsInfo.length === 0) {                 
+                    this.setAppsToDefault ();
+                } else {
+                    this.setAppsInfo(appsInfo);
+                }
+                resolve(appsInfo);
+            }).catch((error) => {
+                this.setAppsToDefault ();
+                resolve({});
+            });
+        });
+
+        return promise;
+    }
+
+    private setAppsToDefault () {
+        let  appsInfo = [];
+        let defaultApp = this.configData.getDefaultApp();
+        
+        defaultApp.sheetId = this.configData.getDefaultId();
+        appsInfo.push (defaultApp);
+
+        this.setAppsInfo(appsInfo);
     }
 
     loadCurrentId(): Promise<any> {
@@ -91,7 +133,7 @@ export class ConfigService {
     }
 
     setToDefaultCurrentId(): void {
-        let defaultId = this.configData.getDefaltId();
+        let defaultId = this.configData.getDefaultId();
         this.setCurrentId(defaultId);
     }
 
@@ -104,13 +146,13 @@ export class ConfigService {
         return this.configData.getCurrentId();
     }
 
-    getAppIds(): AppId[] {
-        return this.configData.getIDs();
+    getAppsInfo(): AppInfo[] {
+        return this.configData.getAppsInfo();
     }
 
-    setAppIds(appIds: AppId[]): any {
-        this.configData.setIDs(appIds);
-        this.storage.set('ids', appIds);
+    setAppsInfo(appsInfo: AppInfo[]): void {
+        this.configData.setAppsInfo(appsInfo);
+        this.storage.set('appsinfo', appsInfo);
     }
 
     getAppInfoUrl(sheetId: string): string {
@@ -125,9 +167,9 @@ export class ConfigService {
         return "https://spreadsheets.google.com/feeds/list/" + this.configData.getCurrentId() + "/3/public/values?alt=json";
     }
 
-    addId(id) {
-        this.configData.getIDs().push({ "sheetId": id });
-        this.storage.set('ids', this.configData.getIDs());
+    addAppsInfo(appInfo: AppInfo) {
+        this.configData.getAppsInfo().push(appInfo);
+        this.storage.set('appsinfo', this.configData.getAppsInfo());
     }
 
     reset(): Promise<any> {

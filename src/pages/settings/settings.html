@@ -27,10 +27,11 @@
 
         <div item-left>
           <h2>{{app.name}}</h2>
-          <h3>{{app.author}}</h3>
+          <h3>{{app.author}} &nbsp; {{app.email}}</h3>
+          <h3>{{app.webpage}}</h3>
         </div>
 
-        <ion-checkbox [hidden]="!selectionMode" item-right checked="app.selected" (click)="selectForDeletion (app)"></ion-checkbox>
+        <ion-checkbox [hidden]="!selectionMode" item-right [checked]="app.selected" (click)="selectForDeletion (app)"></ion-checkbox>
       </ion-item>
     </ion-list>
   </div>

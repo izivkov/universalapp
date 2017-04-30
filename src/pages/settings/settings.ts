@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import { ConfigService } from '../../app/config.service';
-import { AppId } from '../../data/app-id';
 import { AppInfo } from '../../data/app-info';
 import { AppInfoService } from '../../data/app-info.service';
 import { RefreshService } from '../../common/refresh.service';
@@ -39,19 +38,20 @@ export class SettingsPage {
 
   deleteSelected(): void {
     this.selectionMode = false;
-    var appIds: AppId[] = this.configService.getAppIds();
+    var appsInfo: AppInfo [] = this.configService.getAppsInfo();
 
     for (let i = this.apps.length - 1; i >= 0; i--) {
       if (this.apps[i].selected) {
-        if (appIds[i].sheetId === this.configService.getCurrentId()) {
+        if (appsInfo[i].sheetId === this.configService.getCurrentId()) {
           this.utils.showToast("Cannot detele current app");
           continue;
         }
-        appIds.splice(i, 1);
+        appsInfo.splice(i, 1);
+        // do not break here, there could be more than one selected.
       }
     }
 
-    this.configService.setAppIds(appIds);
+    this.configService.setAppsInfo (appsInfo);
     this.getAppsInfo();
   }
 
@@ -70,22 +70,7 @@ export class SettingsPage {
   }
 
   getAppsInfo(): void {
-    var appIds: AppId[] = this.configService.getAppIds();
-    var urls: string[] = [];
-    this.apps = [];
-
-    for (let i in appIds) {
-      urls.push(this.configService.getAppInfoUrl(appIds[i].sheetId));
-    }
-
-    this.appInfoService.getAppsInfo(urls).subscribe(
-      appsArr => {
-        for (let i in appsArr) {
-          this.apps[i] = appsArr[i][0];
-          this.apps[i].sheetId = appIds[i].sheetId;
-        }
-      },
-      error => this.errorMessage = <any>error);
+   this.apps = this.configService.getAppsInfo();
   }
 
   getCurrentId(): string {
@@ -93,7 +78,7 @@ export class SettingsPage {
   }
 
   presentAddApp(ev) {
-    let modal = this.modalController.create(AddAppPage, { appIds: this.configService.getAppIds() });
+    let modal = this.modalController.create(AddAppPage, { appsInfo: this.configService.getAppsInfo() });
 
     modal.onDidDismiss(data => {
       console.log('MODAL DATA', data);
@@ -131,7 +116,11 @@ export class SettingsPage {
 
   longPress(): void {
     this.selectionMode = true;
-    this.vibration.vibrate(100);
+    this.vibration.vibrate(50);
+
+    for (let i = 0; i < this.apps.length; i++) {
+      this.apps[i].selected = false;
+    }
   }
 
   constructor(

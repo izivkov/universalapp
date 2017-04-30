@@ -39,16 +39,42 @@ export class ConfigData {
     }
 }
 
+type StoreKeys = "appsInfo" | "currentId";
+
+class SettingsStorage {
+    private storage: Storage;
+
+    constructor() {
+        this.storage = new Storage(null);
+    }
+
+    get(key: StoreKeys): any {
+        return this.storage.get(key);
+    }
+
+    set(key: StoreKeys, value: any): void {
+        this.storage.set(key, value);
+    }
+
+    ready () : Promise<any> {
+        return this.storage.ready ();
+    }
+
+    clear () : Promise<any> {
+        return this.storage.clear ();
+    }
+}
+
 export class ConfigService {
 
     private configData: ConfigData;
-    private storage: Storage;
     errorMessage: string;
+    storage: SettingsStorage;
 
     constructor( @Inject(AppInfoService) private appInfoService: AppInfoService) {
 
         this.configData = new ConfigData();
-        this.storage = new Storage(null);
+        this.storage = new SettingsStorage();
     }
 
     load(): Promise<ConfigData> {
@@ -94,15 +120,15 @@ export class ConfigService {
     loadApps(): Promise<any> {
 
         let promise: Promise<any> = new Promise((resolve: any) => {
-            this.storage.get('appsinfo').then((appsInfo) => {
-                if (!appsInfo || appsInfo.length === 0) {                 
-                    this.setAppsToDefault ();
+            this.storage.get("appsInfo").then((appsInfo) => {
+                if (!appsInfo || appsInfo.length === 0) {
+                    this.setAppsToDefault();
                 } else {
                     this.setAppsInfo(appsInfo);
                 }
                 resolve(appsInfo);
             }).catch((error) => {
-                this.setAppsToDefault ();
+                this.setAppsToDefault();
                 resolve({});
             });
         });
@@ -110,12 +136,12 @@ export class ConfigService {
         return promise;
     }
 
-    private setAppsToDefault () {
-        let  appsInfo = [];
+    private setAppsToDefault() {
+        let appsInfo = [];
         let defaultApp = this.configData.getDefaultApp();
-        
+
         defaultApp.sheetId = this.configData.getDefaultId();
-        appsInfo.push (defaultApp);
+        appsInfo.push(defaultApp);
 
         this.setAppsInfo(appsInfo);
     }
@@ -152,7 +178,7 @@ export class ConfigService {
 
     setAppsInfo(appsInfo: AppInfo[]): void {
         this.configData.setAppsInfo(appsInfo);
-        this.storage.set('appsinfo', appsInfo);
+        this.storage.set('appsInfo', appsInfo);
     }
 
     getAppInfoUrl(sheetId: string): string {
@@ -169,7 +195,7 @@ export class ConfigService {
 
     addAppsInfo(appInfo: AppInfo) {
         this.configData.getAppsInfo().push(appInfo);
-        this.storage.set('appsinfo', this.configData.getAppsInfo());
+        this.storage.set('appsInfo', this.configData.getAppsInfo());
     }
 
     reset(): Promise<any> {

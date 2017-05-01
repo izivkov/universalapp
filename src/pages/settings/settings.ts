@@ -70,7 +70,7 @@ export class SettingsPage {
 
     let alert = this.alertCtrl.create({
       title: 'App Info',
-      message: 'Name: <b>' + app.name + '</b><br>Author: <b>' + app.author + '</b><br>Web Page: <b>' + app.webpage + '</b><br>email: <b>' + app.email + '</b>',
+      message: 'Name: <b>' + app.name + '</b><br>Author: <b>' + app.author + '</b><br>Web Page: <b>' + app.webpage + '</b><br>email: <b>' + app.email + '</b></br></br>' + app.description,
       buttons: [
         {
           text: 'Ok',

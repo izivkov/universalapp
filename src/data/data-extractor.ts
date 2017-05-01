@@ -4,14 +4,25 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-export class DataExtractor<T> {   
+export class DataExtractor<T> {
 
-    constructor(private http: Http, private url?:string) { }
+    private cache: Cache = new Cache ();
 
-    protected getData (url?: string): Observable<T[]> {
-        return this.http.get(url || this.url)
+    constructor(private http: Http, private url?: string) { }
+
+    protected getData(url?: string): Observable<T[]> {
+        var resultUrl = url || this.url;
+        let cachedValue = this.cache.get (resultUrl);
+        if (cachedValue) {
+            return cachedValue;
+        }
+
+        let result = this.http.get(resultUrl)
             .map(this.extractData)
             .catch(this.handleError);
+
+        this.cache.put (resultUrl, result);
+        return result;
     }
 
     private extractData(res: Response) {
@@ -44,5 +55,17 @@ export class DataExtractor<T> {
         }
         console.error(errMsg);
         return Observable.throw(errMsg);
+    }
+}
+
+class Cache {
+    private map = {};
+
+    put (key: string, value: any) : void {
+        this.map [key] = value;
+    }
+
+    get (key: string) : any {
+        return this.map [key];
     }
 }

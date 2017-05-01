@@ -142,7 +142,7 @@ export class SettingsPage {
 
   longPress(): void {
     this.mode = Modes.selection;
-    this.vibration.vibrate(20);
+    this.vibration.vibrate(40);
 
     for (let i = 0; i < this.apps.length; i++) {
       this.apps[i].selected = false;

@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-navbar [hidden]="selectionMode" hideBackButton="false">
+  <ion-navbar [hidden]="mode == modes.selection" hideBackButton="false">
     <ion-title>
       {{screen.title}}
     </ion-title>
   </ion-navbar>
-  <ion-toolbar *ngIf="selectionMode" color="primary">
+  <ion-toolbar *ngIf="mode == modes.selection" color="primary">
     <ion-buttons>
-      <button item-right ion-button icon-only (click)="selectionMode = false"><ion-icon name="close"></ion-icon></button>
+      <button item-right ion-button icon-only (click)="mode = modes.normal"><ion-icon name="close"></ion-icon></button>
     </ion-buttons>
     <ion-buttons end>
       <button ion-button icon-only (click)="deleteSelected()"><ion-icon name="trash"></ion-icon></button>
@@ -27,11 +27,11 @@
 
         <div item-left>
           <h2>{{app.name}}</h2>
-          <h3>{{app.author}} &nbsp; {{app.email}}</h3>
-          <h3>{{app.webpage}}</h3>
+          <h3>{{app.author}}</h3>
         </div>
 
-        <ion-checkbox [hidden]="!selectionMode" item-right [checked]="app.selected" (click)="selectForDeletion (app)"></ion-checkbox>
+        <ion-button [hidden]="mode == modes.selection" item-right (click)="showInfo (app)"><ion-icon name="information-circle"></ion-icon></ion-button>
+        <ion-checkbox [hidden]="mode != modes.selection" item-right [checked]="app.selected" (click)="selectForDeletion (app)"></ion-checkbox>
       </ion-item>
     </ion-list>
   </div>

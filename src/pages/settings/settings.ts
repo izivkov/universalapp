@@ -10,6 +10,9 @@ import { AddAppPage } from './add-app';
 import { Utils } from '../../common/utils';
 import { Vibration } from '@ionic-native/vibration';
 
+
+enum Modes {normal, selection,  information};
+
 @Component({
   templateUrl: 'settings.html',
   providers: [AppInfoService, RefreshService, Utils, Vibration]
@@ -17,12 +20,15 @@ import { Vibration } from '@ionic-native/vibration';
 
 export class SettingsPage {
 
-  selectionMode: boolean = false;
+  modes = Modes;
+
+  mode: Modes = Modes.normal;
   screen: any;
   errorMessage: string;
   apps: AppInfo[] = [];
 
   ngOnInit() {
+    this.mode = Modes.normal;
     this.screen = { name: 'settings' };
     this.screen = { title: 'Settings' };
     this.getAppsInfo();
@@ -33,11 +39,15 @@ export class SettingsPage {
   }
 
   selectForDeletion(app: AppInfo) {
+    if (this.mode != Modes.selection) {
+      return;
+    }
+
     app.selected = !app.selected;
   }
 
   deleteSelected(): void {
-    this.selectionMode = false;
+    this.mode = Modes.normal;
     var appsInfo: AppInfo [] = this.configService.getAppsInfo();
 
     for (let i = this.apps.length - 1; i >= 0; i--) {
@@ -55,8 +65,24 @@ export class SettingsPage {
     this.getAppsInfo();
   }
 
+  showInfo (app: AppInfo): void {
+    this.mode = Modes.information;
+
+    let alert = this.alertCtrl.create({
+      title: 'App Info',
+      message: 'Name: <b>' + app.name + '</b><br>Author: <b>' + app.author + '</b><br>Web Page: <b>' + app.webpage + '</b><br>email: <b>' + app.email + '</b>',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+          }
+        }]
+    });
+    alert.present();
+  }
+
   select(app: AppInfo): void {
-    if (this.selectionMode) {
+    if (this.mode != Modes.normal) {
       return;
     }
 
@@ -115,8 +141,8 @@ export class SettingsPage {
   }
 
   longPress(): void {
-    this.selectionMode = true;
-    this.vibration.vibrate(50);
+    this.mode = Modes.selection;
+    this.vibration.vibrate(20);
 
     for (let i = 0; i < this.apps.length; i++) {
       this.apps[i].selected = false;

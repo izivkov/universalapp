@@ -3,6 +3,6 @@
 export class AppInfo {
   // Other properties are created when loaded from Google Sheets.
   constructor(
-    public name: string, public selected: boolean, public sheetId: string) 
+    public name: string, public selected: boolean, public sheetId: string, public email: string, public webpage: string, public author: string) 
     {}
 }

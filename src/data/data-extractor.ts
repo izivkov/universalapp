@@ -6,13 +6,13 @@ import 'rxjs/add/operator/map';
 
 export class DataExtractor<T> {
 
-    private cache: Cache = new Cache ();
+    private cache: Cache = new Cache();
 
     constructor(private http: Http, private url?: string) { }
 
-    protected getData(url?: string): Observable<T[]> {
-        var resultUrl = url || this.url;
-        let cachedValue = this.cache.get (resultUrl);
+    protected getData(url: string): Observable<T[]> {
+        var resultUrl = url;
+        let cachedValue = this.cache.get(resultUrl);
         if (cachedValue) {
             return cachedValue;
         }
@@ -21,7 +21,7 @@ export class DataExtractor<T> {
             .map(this.extractData)
             .catch(this.handleError);
 
-        this.cache.put (resultUrl, result);
+        this.cache.put(resultUrl, result);
         return result;
     }
 
@@ -61,11 +61,11 @@ export class DataExtractor<T> {
 class Cache {
     private map = {};
 
-    put (key: string, value: any) : void {
-        this.map [key] = value;
+    put(key: string, value: any): void {
+        this.map[key] = value;
     }
 
-    get (key: string) : any {
-        return this.map [key];
+    get(key: string): any {
+        return this.map[key];
     }
 }

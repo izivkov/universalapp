@@ -67,17 +67,38 @@ export class SettingsPage {
   showInfo(app: AppInfo): void {
     this.mode = Modes.information;
 
-    let alert = this.alertCtrl.create({
-      title: 'App Info',
-      message: 'Name: <b>' + app.name + '</b><br>Author: <b>' + app.author + '</b><br>Web Page: <b>' + app.webpage + '</b><br>email: <b>' + app.email + '</b></br></br>' + app.description,
-      buttons: [
-        {
-          text: 'Ok',
-          handler: () => {
-          }
-        }]
-    });
-    alert.present();
+    this.appInfoService.getAppInfo(this.configService.getAppInfoUrl(app.sheetId)).subscribe(
+      appResult => {
+        let retrievedApp = appResult[0];
+        retrievedApp.sheetId = app.sheetId;
+        this.updateAppInSetting(retrievedApp) // this is a good place to update the setting with the latest app.
+
+        let alert = this.alertCtrl.create({
+          title: 'App Info',
+          message: 'Name: <b>' + retrievedApp.name + '</b><br>Author: <b>' + retrievedApp.author + '</b><br>Web Page: <b>' 
+            + retrievedApp.webpage + '</b><br>email: <b>' + retrievedApp.email + '</b></br></br>' + retrievedApp.description,
+          buttons: [
+            {
+              text: 'Ok',
+              handler: () => {
+              }
+            }]
+        });
+        alert.present();
+      },
+      error => {
+        this.utils.showToast("This App is currently not accessable!");
+      })
+  }
+
+  updateAppInSetting(app: AppInfo): void {
+    for (let i = 0; i < this.apps.length; i++) {
+      if (this.apps[i].sheetId === app.sheetId) {
+        this.apps [i] = app;
+        this.configService.setAppsInfo (this.apps);
+        break;
+      }
+    }
   }
 
   select(app: AppInfo): void {

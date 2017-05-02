@@ -83,6 +83,7 @@ export class ConfigService {
             this.storage.ready().then(() => {
 
                 // this.reset();
+                
                 this.getDefaultApp().then(() => {
 
                     Promise.all([

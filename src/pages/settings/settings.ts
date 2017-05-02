@@ -10,7 +10,6 @@ import { AddAppPage } from './add-app';
 import { Utils } from '../../common/utils';
 import { Vibration } from '@ionic-native/vibration';
 
-
 enum Modes {normal, selection,  information};
 
 @Component({

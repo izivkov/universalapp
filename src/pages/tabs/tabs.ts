@@ -7,10 +7,12 @@ import { ScreenInfoService } from '../../data/screen-info.service';
 
 import { Refreshable } from '../../common/refreshable';
 import { RefreshService } from '../../common/refresh.service';
+import { ConfigService } from '../../app/config.service';
+import { Utils } from '../../common/utils';
 
 @Component({
   templateUrl: 'tabs.html',
-  providers: [ScreenInfoService, RefreshService]
+  providers: [ScreenInfoService, RefreshService, Utils]
 })
 export class Tabs implements Refreshable {
 
@@ -30,10 +32,18 @@ export class Tabs implements Refreshable {
       screens => {
         this.screens = screens;
       },
-      error => this.errorMessage = <any>error);
+      error => {
+        this.errorMessage = <any>error;
+        this.utils.showToast("Cannot access this app - selecting the default app.");
+        this.configService.setToDefaultCurrentId ();
+        this.getScreens (); // recursive
+      });
   }
 
-  constructor(private screensService: ScreenInfoService, private refreshService: RefreshService) {
+  constructor(private screensService: ScreenInfoService, 
+    private refreshService: RefreshService, 
+    private utils: Utils,
+    private configService: ConfigService) {
 
     this.tabRoot = TabPageHome;
     this.tabRootSecondary = TabPageSecondary;

@@ -10,7 +10,7 @@ import { AddAppPage } from './add-app';
 import { Utils } from '../../common/utils';
 import { Vibration } from '@ionic-native/vibration';
 
-enum Modes {normal, selection,  information};
+enum Modes { normal, selection, information };
 
 @Component({
   templateUrl: 'settings.html',
@@ -47,7 +47,7 @@ export class SettingsPage {
 
   deleteSelected(): void {
     this.mode = Modes.normal;
-    var appsInfo: AppInfo [] = this.configService.getAppsInfo();
+    var appsInfo: AppInfo[] = this.configService.getAppsInfo();
 
     for (let i = this.apps.length - 1; i >= 0; i--) {
       if (this.apps[i].selected) {
@@ -60,11 +60,11 @@ export class SettingsPage {
       }
     }
 
-    this.configService.setAppsInfo (appsInfo);
+    this.configService.setAppsInfo(appsInfo);
     this.getAppsInfo();
   }
 
-  showInfo (app: AppInfo): void {
+  showInfo(app: AppInfo): void {
     this.mode = Modes.information;
 
     let alert = this.alertCtrl.create({
@@ -85,17 +85,24 @@ export class SettingsPage {
       return;
     }
 
-    this.configService.setCurrentId(app.sheetId);
-    // this.navCtrl.pop();
-    this.refreshService.refreshAll ();
+    // check if the app is still accessable...
+    this.appInfoService.getAppInfo(this.configService.getAppInfoUrl(app.sheetId)).subscribe(
+      appResult => {
+        this.configService.setCurrentId(app.sheetId);
+        // this.navCtrl.pop();
+        this.refreshService.refreshAll();
+      },
+      error => {
+        this.utils.showToast("This App is currently not accessable!");
+      })
   }
 
   onRefresh(): void {
-    console.log ("Settings onRefresh...")
+    console.log("Settings onRefresh...")
   }
 
   getAppsInfo(): void {
-   this.apps = this.configService.getAppsInfo();
+    this.apps = this.configService.getAppsInfo();
   }
 
   getCurrentId(): string {

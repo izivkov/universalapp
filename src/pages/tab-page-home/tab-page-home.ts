@@ -45,7 +45,7 @@ export class TabPageHome extends Page implements Refreshable {
   }
 
   onRefresh(): void {
-    this.getButtons();    
+    this.getButtons();
   }
 
   refresh(): void {

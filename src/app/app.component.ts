@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-
+import { Platform, AlertController } from 'ionic-angular';
+import { Network } from "@ionic-native/network";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { StatusBar } from "@ionic-native/status-bar";
 
@@ -14,15 +14,35 @@ export class MyApp {
   rootPage = Tabs;
   buttons: any;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
+    private network: Network,
+    private alertCtrl: AlertController) {
+
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault(); // use provided instances instead, dependency injection rules!
+      statusBar.styleDefault();
       splashScreen.hide();
+      this.checkNetwork();
     });
   }
 
   ngOnInit() {
   }
+
+  checkNetwork() {
+    if (this.network.type === 'none') {
+      let alert = this.alertCtrl.create({
+        title: "No Connection!",
+        subTitle: "Please connect to network and try agian.",
+        buttons: [
+          {
+            text: 'Ok',
+            handler: () => {
+              navigator['app'].exitApp(); 
+            }
+          }]
+      });
+      alert.present();
+    }
+  }
+
 }

@@ -14,6 +14,7 @@ import { Btn } from '../components/btn/btn';
 import { IonicStorageModule } from '@ionic/storage';
 import { ConfigService } from '../app/config.service';
 import { AppInfoService } from '../data/app-info.service';
+import { Network } from "@ionic-native/network";
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -54,6 +55,7 @@ export function loadConfig(config: ConfigService): Function {
   providers: [StatusBar, // Newly add for ionic 3
     SplashScreen, // Newly add for ionic 3
     AppInfoService,
+    Network,
     { provide: [ErrorHandler], useClass: IonicErrorHandler },
     ConfigService,
     {

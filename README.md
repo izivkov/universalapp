@@ -91,7 +91,7 @@ and enter:
     gradle wrapper
     ./gradlew build
     
-You may need to add the following to platforms/android/CordovaLib/build.gradle in the 'android' namespace:
+You may need to add the following to [ROOT-OF-PROJECT]/platforms/android/CordovaLib/build.gradle in the 'android' namespace:
 
     lintOptions {
       abortOnError false;

@@ -3,7 +3,6 @@
 ## Universal Mobile App driven by Google Sheets ##
 Monday, 17. April 2017 10:01PM 
 By: Ivo Zivkov, izivkov@gmail.com
-
 ### Introduction ###
 
 This is a simple hybrid mobile application allowing users to define its functionality by only manipulating its backing Google Spreadsheet. Instead of a traditional database for the back-end, it uses [Google Sheets](https://www.google.ca/sheets/about) to store data, content, behaviour and styling information. The app can keep a list of Google Sheets and switch between them, in effect switching to a different app. 
@@ -24,7 +23,6 @@ A lot of the logic for the app can be implemented in the Google Sheets through s
 ### Nomenclature
 
 Since the app can itself refer to multiple Google Sheets which define apps, the naming could be confusing. We refer to the Google Sheet as "Sheet App", and the mobile app as just "App". Similarly, tabs in a Googe Sheet are referred as "Sheet Tab", and a tab in the mobile app as just "Tab".
-
 ### Limitations
 
 There is always a balance between flexibility and ease of use. This app is geared toward simplicity, and therefore we have applied some constraints:
@@ -44,11 +42,11 @@ As a pre-requirement you need to have insatlled the Java SDK and Android SDK. Yo
 
 At a minimum, you must have the following android SDK packages installed:
 
-      Path                 | Version | Description                  | Location             
-      -------              | ------- | -------                      | -------              
-      build-tools;19.1.0   | 19.1.0  | Android SDK Build-Tools 19.1 | build-tools/19.1.0/  
-      platform-tools       | 25.0.4  | Android SDK Platform-Tools   | platform-tools/      
-      tools                | 26.0.1  | Android SDK Tools 26.0.1     | tools/               
+      Path                 | Version | Description                  | Location
+      -------              | ------- | -------                      | -------
+      build-tools;19.1.0   | 19.1.0  | Android SDK Build-Tools 19.1 | build-tools/19.1.0/
+      platform-tools       | 25.0.4  | Android SDK Platform-Tools   | platform-tools/
+      tools                | 26.0.1  | Android SDK Tools 26.0.1     | tools/
 
 You also need [gradle 3.5](https://gradle.org/install).
 
@@ -95,6 +93,7 @@ A debug and a release APKs will be generated into directory:
 
     [ROOT-OF-PROJECT]/platforms/android/build/outputs/apk
     
+
 ### Creating your own sheet app
 
 The process is as follows:
@@ -124,6 +123,7 @@ Copy the link and send it to your mobile device in an email.
 3. Now, in the mobile app, go to settings, add a new Sheet App, and paste the URL to connect to your new Google Sheet. This, in effect, will add a new Sheet App to your mobile App.
 
 4. Interactively make changes to your Google Sheet and refresh the app the see your changes.
+
 
 ### Application Structure
 

@@ -44,5 +44,4 @@ export class MyApp {
       alert.present();
     }
   }
-
 }

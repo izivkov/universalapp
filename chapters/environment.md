@@ -57,6 +57,14 @@ and enter:
     gradle wrapper
     ./gradlew build
 
+You may have to add the following in `[ROOT-OF-PROJECT]/platforms/android/CordovaLib/build.gradle` under teh `android` namespace:
+
+        android {
+            lintOptions {
+                abortOnError false
+            }
+        }
+
 A debug and a release APKs will be generated into directory:
 
     [ROOT-OF-PROJECT]/platforms/android/build/outputs/apk

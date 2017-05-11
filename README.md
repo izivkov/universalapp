@@ -3,6 +3,7 @@
 ## Universal Mobile App driven by Google Sheets ##
 Monday, 17. April 2017 10:01PM 
 By: Ivo Zivkov, izivkov@gmail.com
+
 ### Introduction ###
 
 This is a simple hybrid mobile application allowing users to define its functionality by only manipulating its backing Google Spreadsheet. Instead of a traditional database for the back-end, it uses [Google Sheets](https://www.google.ca/sheets/about) to store data, content, behaviour and styling information. The app can keep a list of Google Sheets and switch between them, in effect switching to a different app. 
@@ -88,6 +89,14 @@ and enter:
 
     gradle wrapper
     ./gradlew build
+
+You may have to add the following in `[ROOT-OF-PROJECT]/platforms/android/CordovaLib/build.gradle` under teh `android` namespace:
+
+        android {
+            lintOptions {
+                abortOnError false
+            }
+        }
 
 A debug and a release APKs will be generated into directory:
 

@@ -11,7 +11,7 @@ Some examples of applications which can be created are:
 
 Here are some screenshots of sample applications which can be created:
 
-<img src="https://drive.google.com/uc?export=view&id=0Bylgm_rd2LmaaWlUbUFxNHVVeGc" alt="Drawing" width="200"/> <img src="https://drive.google.com/uc?export=view&id=0Bylgm_rd2LmaOE9BZlBac25sOFU" alt="Drawing" width="200"/> <img src="https://drive.google.com/uc?export=view&id=0Bylgm_rd2LmaWGMwUE1kNHMzbW8" alt="Drawing" width="200"/> <img src="https://drive.google.com/uc?export=view&id=0Bylgm_rd2LmaT3lQdGk5Z0E4XzA" alt="Drawing" width="200"/>
+<img src="imgs/sample-app.png" alt="Drawing" width="200"/> <img src="imgs/sample-app-1.png" alt="Drawing" width="200"/> <img src="imgs/sample-app-2.png" alt="Drawing" width="200"/> <img src="imgs/sample-app-3.png" alt="Drawing" width="200"/>
 
 A lot of the logic for the app can be implemented in the Google Sheets through sheet formulas, referring to oher sheets for the data, [scripting](https://developers.google.com/apps-script/overview), etc.
 

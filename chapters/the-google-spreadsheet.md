@@ -1,15 +1,14 @@
-
 ### The Google Spreadsheet
 
 All this functionality is driven by the backing Google Spreadsheet. Here we describe what this spreadsheet contains:
 
 The Google Sheet contains three Sheet Tabs: *app-info*, *tabs* and *buttons*:
 
-![](https://lh4.googleusercontent.com/3JOTHzBzKeQQvLNqqB0bFpGG9b5Xx3JChP7JX2GXUtPksbLjSY6YZ5CRSjuc8ilOwjxOdOgVlVzbAyA=w1600-h1134)
+![](imgs/20170419-115408.png)
 
 Each Sheet Tab has some required columns. For example, the *buttons* Sheet Tab has the columns: *name*, *text*, *image*, *video*, *style*, *shape*, *color* and *size*.
 
-![](https://lh5.googleusercontent.com/r9aZHbHB2v4YQ5ouLnxx1_Lz3Mg9ZiniqWCheSx1adqfnXqZDCCEUCHmWN8ReIQBPm-W_kTK1TvKA3o=w1600-h1134-rw)
+![](imgs/20170419-121259.png)
 
 As long as you keep this basic structure, what you put into the spreadsheet is up to you. You can add additionals sheet tabs, add scripting to your sheets, add/remove rows, change text, etc.
 

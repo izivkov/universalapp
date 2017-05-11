@@ -16,9 +16,7 @@ Some examples of applications which can be created are:
 
 Here are some screenshots of sample applications which can be created:
 
-https://drive.google.com/file/d/0Bylgm_rd2LmaaWlUbUFxNHVVeGc
-
-<img src="www.googledrive.com/host/0Bylgm_rd2LmaaWlUbUFxNHVVeGc" alt="Drawing" width="200"/> <img src="www.googledrive.com/host/0Bylgm_rd2LmaaWlUbUFxNHVVeGc" alt="Drawing" width="200"/> <img src="www.googledrive.com/host/0Bylgm_rd2LmaaWlUbUFxNHVVeGc" alt="Drawing" width="200"/> <img src="www.googledrive.com/host/0Bylgm_rd2LmaaWlUbUFxNHVVeGc" alt="Drawing" width="200"/>
+<img src="https://drive.google.com/file/d/0Bylgm_rd2LmaaWlUbUFxNHVVeGc" alt="Drawing" width="200"/> <img src="https://drive.google.com/file/d/0Bylgm_rd2LmaaWlUbUFxNHVVeGc" alt="Drawing" width="200"/> <img src="https://drive.google.com/file/d/0Bylgm_rd2LmaaWlUbUFxNHVVeGc" alt="Drawing" width="200"/> <img src="https://drive.google.com/file/d/0Bylgm_rd2LmaaWlUbUFxNHVVeGc" alt="Drawing" width="200"/>
 
 A lot of the logic for the app can be implemented in the Google Sheets through sheet formulas, referring to oher sheets for the data, [scripting](https://developers.google.com/apps-script/overview), etc.
 

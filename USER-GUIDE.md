@@ -16,7 +16,7 @@ Some examples of applications which can be created are:
 
 Here are some screenshots of sample applications which can be created:
 
-<img src="imgs/sample-app.png" alt="Drawing" width="200"/> <img src="imgs/sample-app-1.png" alt="Drawing" width="200"/> <img src="imgs/sample-app-2.png" alt="Drawing" width="200"/> <img src="imgs/sample-app-3.png" alt="Drawing" width="200"/>
+<img src="https://sites.google.com/site/universalappstoreclassic/documentation/imgs/sample-app.png" alt="Drawing" width="200"/> <img src="https://sites.google.com/site/universalappstoreclassic/documentation/imgs/sample-app-1.png" alt="Drawing" width="200"/> <img src="https://sites.google.com/site/universalappstoreclassic/documentation/imgs/sample-app-2.png" alt="Drawing" width="200"/> <img src="https://sites.google.com/site/universalappstoreclassic/documentation/imgs/sample-app-3.png" alt="Drawing" width="200"/>
 
 A lot of the logic for the app can be implemented in the Google Sheets through sheet formulas, referring to oher sheets for the data, [scripting](https://developers.google.com/apps-script/overview), etc.
 
@@ -39,11 +39,11 @@ The process is as follows:
 
 		https://drive.google.com/open?id=1W0K8HC85gmHvp3fX6eJZCBTL4miTgsLI2ntqW4Sk7ZE
 
-![](imgs/20170418-111348.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170418-111348.png)
 
 		File -> Make a copy
 
-![](imgs/20170418-112053.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170418-112053.png)
 
 This will save a new Google Sheet with a name "My App" to your Google Drive, so you can modify it.
 
@@ -51,11 +51,11 @@ This will save a new Google Sheet with a name "My App" to your Google Drive, so 
 
 		File -> Publish to the web...
 
-![](imgs/20170418-112952.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170418-112952.png)
 
 Copy the link and send it to your mobile device in an email.
 
-![](imgs/20170418-113225.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170418-113225.png)
 
 3. Now, in the mobile app, go to settings, add a new Sheet App, and paste the URL to connect to your new Google Sheet. This, in effect, will add a new Sheet App to your mobile App.
 
@@ -82,11 +82,11 @@ All this functionality is driven by the backing Google Spreadsheet. Here we desc
 
 The Google Sheet contains three Sheet Tabs: *app-info*, *tabs* and *buttons*:
 
-![](imgs/20170419-115408.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170419-115408.png)
 
 Each Sheet Tab has some required columns. For example, the *buttons* Sheet Tab has the columns: *name*, *text*, *image*, *video*, *style*, *shape*, *color* and *size*.
 
-![](imgs/20170419-121259.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170419-121259.png)
 
 As long as you keep this basic structure, what you put into the spreadsheet is up to you. You can add additionals sheet tabs, add scripting to your sheets, add/remove rows, change text, etc.
 
@@ -155,7 +155,7 @@ and the values in your app will be updated with the current price.
 
 This page allows the user to select the sheet app to use, add and delete. Each Google Spreadsheet defines a new sheet app.
 
-![](imgs/20170419-215451.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170419-215451.png)
 
 When you select one of the sheets apps, the user is taken back to the homepage, with the new screen from the selected sheet app.
 
@@ -163,23 +163,23 @@ To add a new sheet app, copy the spreadsheet published link:
 
 		File -> Publish to web...
 
-![](imgs/20170419-222112.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170419-222112.png)
 
-Then in the mobile app, go to Settings and press the ![](imgs/20170420-211826.png) button. A pop-up will appear. Paste the selected link:
+Then in the mobile app, go to Settings and press the ![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170420-211826.png) button. A pop-up will appear. Paste the selected link:
 
-![](imgs/20170419-221309.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170419-221309.png)
 
 Once you paste the link into the dialog box, the sheet app's image and name will appear (defined in the app-info sheet tab of the spreadsheet):
 
-![](imgs/20170419-222411.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170419-222411.png)
 
 Just press the **ADD** button on the dialog and the new sheet app will be added to the list of sheet apps.
 
 To delete a sheet app, long-press on any of the sheets apps in the list, until check-boxes appear on the right. Select the sheet apps you like to delete, and press on the trash can button to delete them. You cannot delete the currently selected sheet app, since you need at least one sheet app to run the mobile app.
 
-![](imgs/20170419-225234.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170419-225234.png)
 
 *Note that you are only deleting references to the spreadsheet from the mobile app, not the actual scpreadsheets.*
 
-You can also reset the the settings to default by pressing the ![](imgs/20170420-211724.png) button. This will remove all the added apps except the default one.
+You can also reset the the settings to default by pressing the ![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170420-211724.png) button. This will remove all the added apps except the default one.
 

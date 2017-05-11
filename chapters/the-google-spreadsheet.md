@@ -4,11 +4,11 @@ All this functionality is driven by the backing Google Spreadsheet. Here we desc
 
 The Google Sheet contains three Sheet Tabs: *app-info*, *tabs* and *buttons*:
 
-![](imgs/20170419-115408.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170419-115408.png)
 
 Each Sheet Tab has some required columns. For example, the *buttons* Sheet Tab has the columns: *name*, *text*, *image*, *video*, *style*, *shape*, *color* and *size*.
 
-![](imgs/20170419-121259.png)
+![](https://sites.google.com/site/universalappstoreclassic/documentation/imgs/20170419-121259.png)
 
 As long as you keep this basic structure, what you put into the spreadsheet is up to you. You can add additionals sheet tabs, add scripting to your sheets, add/remove rows, change text, etc.
 

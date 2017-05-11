@@ -24,6 +24,7 @@ A lot of the logic for the app can be implemented in the Google Sheets through s
 ### Nomenclature
 
 Since the app can itself refer to multiple Google Sheets which define apps, the naming could be confusing. We refer to the Google Sheet as "Sheet App", and the mobile app as just "App". Similarly, tabs in a Googe Sheet are referred as "Sheet Tab", and a tab in the mobile app as just "Tab".
+
 ### Limitations
 
 There is always a balance between flexibility and ease of use. This app is geared toward simplicity, and therefore we have applied some constraints:

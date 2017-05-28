@@ -35,7 +35,7 @@ export class ConfigData {
     }
 
     getDefaultId(): string {
-        return '1W0K8HC85gmHvp3fX6eJZCBTL4miTgsLI2ntqW4Sk7ZE';
+        return '1W0K8HC85gmHvp3fX6eJZCBTL4miTgsLI2ntqW4Sk7ZE'; // univesal
     }
 }
 

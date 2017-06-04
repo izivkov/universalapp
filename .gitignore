@@ -29,6 +29,8 @@ plugins/ios.json
 www/
 $RECYCLE.BIN/
 
+resources.pain-management
+
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
